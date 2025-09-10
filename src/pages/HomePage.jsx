@@ -161,12 +161,12 @@ function HomePage() {
             {/* Buttons */}
 
             <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <Button className="w-full cursor-pointer rounded-md bg-[#2F0FD1] px-8 py-4 hover:bg-[#2F0FD1]/70 sm:w-fit">
+              <Button className="w-full cursor-pointer rounded-md bg-[#2F0FD1] px-8 py-5 hover:bg-[#2F0FD1]/70 sm:w-fit">
                 Explore Communities
               </Button>
               <Button
                 variant="outline"
-                className="w-full cursor-pointer rounded-md bg-[#EDF2FF] px-8 py-4 text-[#2F0FD1] hover:text-[#2F0FD1] sm:w-fit"
+                className="w-full cursor-pointer rounded-md bg-[#EDF2FF] px-8 py-5 text-[#2F0FD1] hover:text-[#2F0FD1] sm:w-fit"
               >
                 View Tasks
               </Button>
@@ -179,7 +179,7 @@ function HomePage() {
         </div>
       </div>
 
-      <div className="mx-auto w-full max-w-[1200px] space-y-8 bg-white px-5 pt-10 md:space-y-16 md:pt-[104px]">
+      <div className="mx-auto w-full max-w-[1200px] space-y-8 bg-white px-5 py-10 md:space-y-16 md:pt-[104px]">
         <div className="mx-auto max-w-[1200px] space-y-4 text-center text-[#050215]">
           <h2 className="text-[32px] font-extrabold md:text-[44px]">
             A Growing Network of Builders
@@ -241,7 +241,7 @@ function HomePage() {
       </div>
 
       <div className="bg-[#F7F9FD]">
-        <div className="mx-auto w-full max-w-[1200px] space-y-8 px-5 pt-10 md:py-[104px]">
+        <div className="mx-auto w-full max-w-[1200px] space-y-8 px-5 py-10 md:py-[104px]">
           <div className="mx-auto max-w-[1200px] space-y-8 text-center text-[#050215]">
             <h2 className="text-[32px] font-extrabold md:text-[44px]">
               Explore Available Tasks
@@ -298,7 +298,7 @@ function HomePage() {
           </div>
 
           <div className="flex justify-center">
-            <Button className="cursor-pointer rounded-md bg-[#2F0FD1] px-8 py-4 hover:bg-[#2F0FD1]/70">
+            <Button className="cursor-pointer rounded-md bg-[#2F0FD1] px-8 py-5 hover:bg-[#2F0FD1]/70">
               See all Tasks
             </Button>
           </div>
@@ -335,7 +335,7 @@ function HomePage() {
       </div>
 
       <div className="bg-[#F7F9FD]">
-        <div className="mx-auto w-full max-w-[1200px] space-y-8 px-5 pt-10 md:py-[104px]">
+        <div className="mx-auto w-full max-w-[1200px] space-y-8 px-5 py-10 md:py-[104px]">
           <div className="mx-auto max-w-[1200px] space-y-8 text-center text-[#050215]">
             <h2 className="text-[32px] font-extrabold md:text-[44px]">
               Featured Communities
@@ -409,7 +409,7 @@ function HomePage() {
           </div>
 
           <div className="flex justify-center">
-            <Button className="cursor-pointer rounded-md bg-[#2F0FD1] px-8 py-4 hover:bg-[#2F0FD1]/70">
+            <Button className="cursor-pointer rounded-md bg-[#2F0FD1] px-8 py-5 hover:bg-[#2F0FD1]/70">
               Explore all Communities
             </Button>
           </div>

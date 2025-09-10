@@ -171,12 +171,12 @@ function RootLayout() {
               </div>
 
               <div className="flex flex-col justify-center gap-4 sm:flex-row sm:justify-start">
-                <Button className="w-full cursor-pointer rounded-md bg-[#2F0FD1] px-8 py-4 hover:bg-[#2F0FD1]/70 sm:w-fit">
+                <Button className="w-full cursor-pointer rounded-md bg-[#2F0FD1] px-8 py-5 hover:bg-[#2F0FD1]/70 sm:w-fit">
                   Explore Communities
                 </Button>
                 <Button
                   variant="outline"
-                  className="w-full cursor-pointer rounded-md bg-white px-8 py-4 text-[#2F0FD1] hover:text-[#2F0FD1] sm:w-fit"
+                  className="w-full cursor-pointer rounded-md bg-white px-8 py-5 text-[#2F0FD1] hover:text-[#2F0FD1] sm:w-fit"
                 >
                   View Tasks
                 </Button>
