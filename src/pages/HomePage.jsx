@@ -144,8 +144,8 @@ function HomePage() {
   return (
     <>
       <div className="mb-10 space-y-16 bg-linear-to-b from-white to-[#EDF2FF]">
-        <div className="space-y-12 border-2">
-          <div className="mx-auto max-w-[1200px] space-y-8 border-2 text-center text-[#1C1C1E]">
+        <div className="space-y-12">
+          <div className="mx-auto max-w-[1200px] space-y-8 text-center text-[#1C1C1E]">
             <h1 className="text-[36px] font-extrabold md:text-[64px]">
               Powering Communities, One Contribution at a Time
             </h1>
@@ -159,7 +159,7 @@ function HomePage() {
 
           {/* Buttons */}
 
-          <div className="flex flex-col items-center justify-center gap-4 border-2 sm:flex-row">
+          <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Button className="w-full cursor-pointer rounded-md bg-[#2F0FD1] px-8 py-4 hover:bg-[#2F0FD1]/70 sm:w-fit">
               Explore Communities
             </Button>
@@ -173,13 +173,13 @@ function HomePage() {
         </div>
 
         {/* Image */}
-        <div className="border border-red-500">
+        <div>
           <img className="w-full" src="/Frame.svg" alt="" />
         </div>
       </div>
 
-      <div className="mb-10 space-y-4 border-2 border-green-500 bg-white">
-        <div className="mx-auto max-w-[1200px] space-y-8 border-2 text-center text-[#050215]">
+      <div className="mb-10 space-y-4 bg-white">
+        <div className="mx-auto max-w-[1200px] space-y-8 text-center text-[#050215]">
           <h2 className="text-[32px] font-extrabold md:text-[44px]">
             A Growing Network of Builders
           </h2>
@@ -190,7 +190,7 @@ function HomePage() {
           </p>
         </div>
 
-        <div className="grid grid-cols-2 gap-1 border-2 border-red-500 sm:grid-cols-4 lg:px-20">
+        <div className="grid grid-cols-2 gap-1 sm:grid-cols-4 lg:px-20">
           {METRICS.map((metric, i) => (
             <div
               key={i}
@@ -208,13 +208,13 @@ function HomePage() {
         </div>
       </div>
 
-      <div className="mb-10 flex flex-col gap-12 border-2 border-green-500 lg:flex-row lg:gap-20 lg:px-20">
+      <div className="mb-10 flex flex-col gap-12 lg:flex-row lg:gap-20 lg:px-20">
         <div className="flex flex-col gap-6">
           <div className="w-fit rounded-[58px] bg-[#E2F1FE] px-8 py-2 text-[20px] text-[#1082E4]">
             About Contribute
           </div>
 
-          <div className="space-y-8 border-2 text-[#050215]">
+          <div className="space-y-8 text-[#050215]">
             <h2 className="text-[30px] font-extrabold md:text-[44px]">
               A thriving ecosystem of builders and innovators
             </h2>
@@ -237,19 +237,19 @@ function HomePage() {
         />
       </div>
 
-      <div className="mb-10 space-y-8 border-2 border-green-500 bg-[#F7F9FD]">
-        <div className="mx-auto max-w-[1200px] space-y-8 border-2 text-center text-[#050215]">
+      <div className="mb-10 space-y-8 bg-[#F7F9FD]">
+        <div className="mx-auto max-w-[1200px] space-y-8 text-center text-[#050215]">
           <h2 className="text-[32px] font-extrabold md:text-[44px]">
-            A Growing Network of Builders
+            Explore Available Tasks
           </h2>
 
           <p className="mx-auto max-w-[800px] text-[18px] font-light md:text-[20px]">
-            Join communities, complete tasks, and earn rewards alongside
-            thousands of contributors.
+            Discover the most active opportunities from communities making real
+            impact
           </p>
         </div>
 
-        <div className="grid grid-cols-1 gap-4 border-2 border-red-500 sm:grid-cols-2 lg:grid-cols-3 lg:px-10">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:px-10">
           {TASKS.map((task, i) => (
             <div
               key={i}
@@ -300,13 +300,13 @@ function HomePage() {
         </div>
       </div>
 
-      <div className="mb-10 flex flex-col gap-12 border-2 border-green-500 lg:flex-row lg:gap-20 lg:px-20">
+      <div className="mb-10 flex flex-col gap-12 lg:flex-row lg:gap-20 lg:px-20">
         <div className="flex flex-col gap-6 lg:order-2">
           <div className="w-fit rounded-[58px] bg-[#E2F1FE] px-8 py-2 text-[20px] text-[#1082E4]">
             Create, Work & Earn
           </div>
 
-          <div className="space-y-8 border-2 text-[#050215]">
+          <div className="space-y-8 text-[#050215]">
             <h2 className="text-[30px] font-extrabold md:text-[44px]">
               Build, Contribute and Get Rewarded
             </h2>
@@ -329,8 +329,8 @@ function HomePage() {
         />
       </div>
 
-      <div className="mb-10 space-y-8 border-2 border-green-500 bg-[#F7F9FD]">
-        <div className="mx-auto max-w-[1200px] space-y-8 border-2 text-center text-[#050215]">
+      <div className="mb-10 space-y-8 bg-[#F7F9FD]">
+        <div className="mx-auto max-w-[1200px] space-y-8 text-center text-[#050215]">
           <h2 className="text-[32px] font-extrabold md:text-[44px]">
             Featured Communities
           </h2>
@@ -341,7 +341,7 @@ function HomePage() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 gap-4 border-2 border-red-500 sm:grid-cols-2 lg:grid-cols-3 lg:px-10">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:px-10">
           {COMMUNITIES.map((community, i) => (
             <div
               key={i}
@@ -406,8 +406,8 @@ function HomePage() {
         </div>
       </div>
 
-      <div className="mb-10 space-y-8 border-2 border-green-500 lg:px-10">
-        <div className="mx-auto max-w-[1200px] space-y-8 border-2 text-center text-[#050215]">
+      <div className="mb-10 space-y-8 lg:px-10">
+        <div className="mx-auto max-w-[1200px] space-y-8 text-center text-[#050215]">
           <h2 className="text-[32px] font-extrabold md:text-[44px]">
             Testimonials
           </h2>

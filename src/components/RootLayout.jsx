@@ -110,7 +110,7 @@ function RootLayout() {
         </Sheet>
       </header>
 
-      <main className="border-2 border-red-500">
+      <main>
         <Outlet />
       </main>
 
