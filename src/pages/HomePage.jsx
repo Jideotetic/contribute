@@ -116,6 +116,30 @@ const COMMUNITY_TAG_BG = {
   DeFi: "bg-[#F6ECF5]",
 };
 
+const TESTIMONIALS = [
+  {
+    image: "/Frame 63.svg",
+    message:
+      "Thanks to Contribute.fi’s transparent payouts, our contributors trust us more. No more confusion about deadlines or payments — it’s all on-chain.",
+    name: "Mark Joe",
+    designation: "Community Owner",
+  },
+  {
+    image: "/Frame 63 (1).svg",
+    message:
+      "Thanks to Contribute.fi’s transparent payouts, our contributors trust us more. No more confusion about deadlines or payments — it’s all on-chain.",
+    name: "Ade Makinwa",
+    designation: "Product Designer",
+  },
+  {
+    image: "/Frame 63 (2).svg",
+    message:
+      "Thanks to Contribute.fi’s transparent payouts, our contributors trust us more. No more confusion about deadlines or payments — it’s all on-chain.",
+    name: "Sarah Martins",
+    designation: "Backend Developer",
+  },
+];
+
 function HomePage() {
   return (
     <>
@@ -379,6 +403,46 @@ function HomePage() {
           <Button className="cursor-pointer rounded-md bg-[#2F0FD1] px-8 py-4 hover:bg-[#2F0FD1]/70">
             Explore all Communities
           </Button>
+        </div>
+      </div>
+
+      <div className="mb-10 space-y-8 border-2 border-green-500 lg:px-10">
+        <div className="mx-auto max-w-[1200px] space-y-8 border-2 text-center text-[#050215]">
+          <h2 className="text-[32px] font-extrabold md:text-[44px]">
+            Testimonials
+          </h2>
+
+          <p className="mx-auto max-w-[800px] text-[18px] font-light md:text-[20px]">
+            Stories from people who have built reputations, earned rewards, and
+            grown with Contribute.fi.
+          </p>
+        </div>
+
+        <div className="flex gap-8 overflow-x-scroll">
+          {TESTIMONIALS.map((testimonial, i) => (
+            <div
+              key={i}
+              className="w-full min-w-[300px] space-y-6 rounded-2xl bg-[#F7F9FD] px-6 py-8 sm:min-w-[392px]"
+            >
+              <div className="flex items-start justify-between">
+                <img src={testimonial.image} alt="" />
+                <img src="/Quotes.svg" alt="" />
+              </div>
+
+              <p className="font-normal text-[#636366]">
+                {testimonial.message}
+              </p>
+
+              <div className="space-y-2">
+                <p className="text-[20px] font-semibold text-[#050215]">
+                  {testimonial.name}
+                </p>
+                <p className="text-[18px] font-medium text-[#2F0FD1]">
+                  {testimonial.designation}
+                </p>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </>
