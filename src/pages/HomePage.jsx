@@ -143,7 +143,7 @@ const TESTIMONIALS = [
 function HomePage() {
   return (
     <>
-      <div className="mb-10 space-y-16 bg-linear-to-b from-white to-[#EDF2FF]">
+      <div className="mb-10 space-y-16 bg-linear-to-b from-white to-[#EDF2FF] px-4">
         <div className="space-y-12">
           <div className="mx-auto max-w-[1200px] space-y-8 text-center text-[#1C1C1E]">
             <h1 className="text-[36px] font-extrabold md:text-[64px]">
@@ -178,7 +178,7 @@ function HomePage() {
         </div>
       </div>
 
-      <div className="mb-10 space-y-4 bg-white">
+      <div className="mb-10 space-y-4 bg-white px-4">
         <div className="mx-auto max-w-[1200px] space-y-8 text-center text-[#050215]">
           <h2 className="text-[32px] font-extrabold md:text-[44px]">
             A Growing Network of Builders
@@ -208,7 +208,7 @@ function HomePage() {
         </div>
       </div>
 
-      <div className="mb-10 flex flex-col gap-12 lg:flex-row lg:gap-20 lg:px-20">
+      <div className="mb-10 flex flex-col gap-12 px-4 lg:flex-row lg:gap-20 lg:px-20">
         <div className="flex flex-col gap-6">
           <div className="w-fit rounded-[58px] bg-[#E2F1FE] px-8 py-2 text-[20px] text-[#1082E4]">
             About Contribute
@@ -237,7 +237,7 @@ function HomePage() {
         />
       </div>
 
-      <div className="mb-10 space-y-8 bg-[#F7F9FD]">
+      <div className="mb-10 space-y-8 bg-[#F7F9FD] px-4">
         <div className="mx-auto max-w-[1200px] space-y-8 text-center text-[#050215]">
           <h2 className="text-[32px] font-extrabold md:text-[44px]">
             Explore Available Tasks
@@ -300,7 +300,7 @@ function HomePage() {
         </div>
       </div>
 
-      <div className="mb-10 flex flex-col gap-12 lg:flex-row lg:gap-20 lg:px-20">
+      <div className="mb-10 flex flex-col gap-12 px-4 lg:flex-row lg:gap-20 lg:px-20">
         <div className="flex flex-col gap-6 lg:order-2">
           <div className="w-fit rounded-[58px] bg-[#E2F1FE] px-8 py-2 text-[20px] text-[#1082E4]">
             Create, Work & Earn
@@ -329,7 +329,7 @@ function HomePage() {
         />
       </div>
 
-      <div className="mb-10 space-y-8 bg-[#F7F9FD]">
+      <div className="mb-10 space-y-8 bg-[#F7F9FD] px-4">
         <div className="mx-auto max-w-[1200px] space-y-8 text-center text-[#050215]">
           <h2 className="text-[32px] font-extrabold md:text-[44px]">
             Featured Communities
@@ -406,7 +406,7 @@ function HomePage() {
         </div>
       </div>
 
-      <div className="mb-10 space-y-8 lg:px-10">
+      <div className="mb-10 space-y-8 px-4 lg:px-10">
         <div className="mx-auto max-w-[1200px] space-y-8 text-center text-[#050215]">
           <h2 className="text-[32px] font-extrabold md:text-[44px]">
             Testimonials

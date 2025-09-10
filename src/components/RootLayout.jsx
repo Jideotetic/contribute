@@ -18,12 +18,22 @@ import {
 import { Menu } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Link, Outlet } from "react-router";
+import { Button } from "./ui/button";
 
 const NAV_LINKS = [
   { title: "Communities", href: "/communities" },
   { title: "Tasks", href: "/tasks" },
   { title: "Testimonials", href: "/#testimonials" },
   { title: "Learn More", href: "/learn-more" },
+];
+
+const FOOTER_LINKS = [
+  { title: "Communities", href: "/communities" },
+  { title: "Testimonials", href: "/#testimonials" },
+  { title: "Tasks", href: "/tasks" },
+  { title: "Terms of Use", href: "/terms-of-use" },
+  { title: "Learn More", href: "/learn-more" },
+  { title: "Privacy Policy", href: "/privacy-policy" },
 ];
 
 function RootLayout() {
@@ -43,7 +53,7 @@ function RootLayout() {
   }, []);
 
   return (
-    <div className="mx-auto w-full max-w-[1200px] p-4">
+    <div className="mx-auto w-full max-w-[1200px]">
       <header className="mb-4 flex items-center justify-between rounded-[360px] bg-[#F0F4FD] px-6 py-4 lg:px-20 lg:py-7">
         <Link href="/" className="text-[32px] font-extrabold text-[#2F0FD1]">
           CF
@@ -114,7 +124,45 @@ function RootLayout() {
         <Outlet />
       </main>
 
-      <footer></footer>
+      <footer className="space-y-16 bg-[#F0F4FD] px-4 pt-16 pb-20 md:px-10">
+        <div className="flex flex-col justify-between gap-12 lg:flex-row lg:items-center">
+          <div className="flex flex-1 flex-col gap-8">
+            <div className="w-full max-w-[483px] space-y-4">
+              <p className="text-[40px] font-semibold text-[#2F0FD1]">CF</p>
+              <p className="text-[20px] font-light text-[#09032A]">
+                Contribute.fi — Decentralized coordination for communities.
+              </p>
+            </div>
+
+            <div className="flex flex-col justify-center gap-4 sm:flex-row sm:justify-start">
+              <Button className="w-full cursor-pointer rounded-md bg-[#2F0FD1] px-8 py-4 hover:bg-[#2F0FD1]/70 sm:w-fit">
+                Explore Communities
+              </Button>
+              <Button
+                variant="outline"
+                className="w-full cursor-pointer rounded-md bg-white px-8 py-4 text-[#2F0FD1] hover:text-[#2F0FD1] sm:w-fit"
+              >
+                View Tasks
+              </Button>
+            </div>
+          </div>
+
+          <div className="grid w-fit grid-cols-1 gap-5 lg:flex-1 lg:grid-cols-3">
+            {FOOTER_LINKS.map((link, i) => (
+              <Link
+                className="font-normal text-[#1C1C1E] hover:underline"
+                key={i}
+                href={link.href}
+              >
+                {link.title}
+              </Link>
+            ))}
+          </div>
+        </div>
+        <p className="text-center font-medium text-[#1C097D]">
+          © 2025 Contribute.fi. All rights reserved{" "}
+        </p>
+      </footer>
     </div>
   );
 }
