@@ -6,6 +6,8 @@ import { createBrowserRouter } from "react-router";
 import { RouterProvider } from "react-router/dom";
 import HomePage from "./pages/HomePage";
 import RootLayout from "./components/RootLayout";
+import TaskPage from "./pages/TaskPage";
+import CommunitiesPage from "./pages/CommunitiesPage";
 
 const router = createBrowserRouter([
   {
@@ -14,6 +16,8 @@ const router = createBrowserRouter([
     children: [
       { index: true, Component: HomePage },
       { path: "learn-more", element: <></> },
+      { path: "tasks", Component: TaskPage },
+      { path: "communities", Component: CommunitiesPage },
     ],
   },
 ]);

@@ -17,13 +17,13 @@ import {
 } from "@/components/ui/sheet";
 import { Menu } from "lucide-react";
 import { Fragment, useEffect, useState } from "react";
-import { Link, Outlet } from "react-router";
+import { Link, Outlet, useLocation, useNavigate } from "react-router";
 import { Button } from "./ui/button";
 
 const NAV_LINKS = [
   { title: "Communities", href: "/communities" },
   { title: "Tasks", href: "/tasks" },
-  { title: "Testimonials", href: "/#testimonials" },
+  { title: "Testimonials", href: "#testimonials" },
   { title: "Learn More", href: "/learn-more" },
 ];
 
@@ -38,6 +38,9 @@ const FOOTER_LINKS = [
 
 function RootLayout() {
   const [sheetIsOpen, setSheetIsOpen] = useState(false);
+
+  const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const mediaQuery = window.matchMedia("(min-width: 768px)");
@@ -69,9 +72,38 @@ function RootLayout() {
                     {link.title === "Testimonials" ? (
                       <a
                         className="text-[#0D0516] hover:underline"
-                        href={link.href}
+                        href="#testimonials"
+                        onClick={(e) => {
+                          e.preventDefault();
+
+                          if (location.pathname === "/") {
+                            const el = document.querySelector("#testimonials");
+                            if (el) {
+                              el.scrollIntoView({ behavior: "smooth" });
+                              window.history.pushState(
+                                null,
+                                "",
+                                "#testimonials",
+                              );
+                            }
+                          } else {
+                            navigate("/", { replace: false });
+
+                            window.history.pushState(null, "", "#testimonials");
+
+                            setTimeout(() => {
+                              const checkExist = setInterval(() => {
+                                const el =
+                                  document.querySelector("#testimonials");
+                                if (el) {
+                                  el.scrollIntoView({ behavior: "smooth" });
+                                  clearInterval(checkExist);
+                                }
+                              }, 100);
+                            }, 400);
+                          }
+                        }}
                       >
-                        {" "}
                         {link.title}
                       </a>
                     ) : (
@@ -115,22 +147,57 @@ function RootLayout() {
                             {link.title === "Testimonials" ? (
                               <a
                                 className="text-[#0D0516] hover:underline"
-                                href={link.href}
+                                href="#testimonials"
                                 onClick={(e) => {
                                   e.preventDefault();
-
                                   setSheetIsOpen(false);
 
-                                  setTimeout(() => {
+                                  const scrollToTestimonials = () => {
                                     const el =
                                       document.querySelector("#testimonials");
                                     if (el) {
                                       el.scrollIntoView({ behavior: "smooth" });
+
+                                      window.history.pushState(
+                                        null,
+                                        "",
+                                        "#testimonials",
+                                      );
                                     }
-                                  }, 300); // delay should match your sheet transition duration
+                                  };
+
+                                  if (location.pathname === "/") {
+                                    // Already on homepage, just scroll
+                                    setTimeout(
+                                      () => scrollToTestimonials(),
+                                      300,
+                                    );
+                                  } else {
+                                    // Navigate to homepage and scroll after navigation
+                                    navigate("/", { replace: false });
+
+                                    window.history.pushState(
+                                      null,
+                                      "",
+                                      "#testimonials",
+                                    );
+
+                                    // Wait for the homepage to mount
+                                    setTimeout(() => {
+                                      const checkExist = setInterval(() => {
+                                        const el =
+                                          document.querySelector(
+                                            "#testimonials",
+                                          );
+                                        if (el) {
+                                          scrollToTestimonials();
+                                          clearInterval(checkExist);
+                                        }
+                                      }, 100);
+                                    }, 400);
+                                  }
                                 }}
                               >
-                                {" "}
                                 {link.title}
                               </a>
                             ) : (
