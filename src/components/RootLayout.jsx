@@ -54,14 +54,14 @@ function RootLayout() {
 
   return (
     <div className="mx-auto w-full max-w-[1200px]">
-      <header className="mb-4 flex items-center justify-between rounded-[360px] bg-[#F0F4FD] px-6 py-4 lg:px-20 lg:py-7">
-        <Link href="/" className="text-[32px] font-extrabold text-[#2F0FD1]">
+      <header className="mx-5 mt-8 mb-10 flex items-center justify-between rounded-[360px] bg-[#F0F4FD] px-6 py-4 md:mb-[104px] lg:px-20 lg:py-6">
+        <Link href="/" className="text-[32px] font-bold text-[#2F0FD1]">
           CF
         </Link>
 
         {/* DESKTOP NAV */}
         <NavigationMenu className="hidden md:block">
-          <NavigationMenuList className="flex gap-4">
+          <NavigationMenuList className="flex gap-3 lg:gap-10">
             {NAV_LINKS.map((link) => (
               <NavigationMenuItem key={link.title}>
                 <NavigationMenuLink asChild>
