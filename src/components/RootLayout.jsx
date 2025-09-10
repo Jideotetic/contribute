@@ -17,13 +17,13 @@ import {
 } from "@/components/ui/sheet";
 import { Menu } from "lucide-react";
 import { Fragment, useEffect, useState } from "react";
-import { Link, Outlet, useLocation, useNavigate } from "react-router";
+import { Link, Outlet, useNavigate } from "react-router";
 import { Button } from "./ui/button";
 
 const NAV_LINKS = [
   { title: "Communities", href: "/communities" },
   { title: "Tasks", href: "/tasks" },
-  { title: "Testimonials", href: "#testimonials" },
+  { title: "Testimonials", href: "/#testimonials" },
   { title: "Learn More", href: "/learn-more" },
 ];
 
@@ -39,9 +39,6 @@ const FOOTER_LINKS = [
 function RootLayout() {
   const [sheetIsOpen, setSheetIsOpen] = useState(false);
 
-  const location = useLocation();
-  const navigate = useNavigate();
-
   useEffect(() => {
     const mediaQuery = window.matchMedia("(min-width: 768px)");
     const handler = () => {
@@ -55,11 +52,21 @@ function RootLayout() {
     return () => mediaQuery.removeEventListener("change", handler);
   }, []);
 
+  const navigate = useNavigate();
+
   return (
     <div>
       <div className="px-5">
         <header className="mx-auto mt-8 mb-10 flex w-full max-w-[1200px] items-center justify-between rounded-[360px] bg-[#F0F4FD] px-6 py-4 md:mb-[104px] lg:px-20 lg:py-6">
-          <Link href="/" className="text-[32px] font-bold text-[#2F0FD1]">
+          <Link
+            href="/"
+            onClick={(e) => {
+              e.preventDefault();
+
+              navigate("/");
+            }}
+            className="text-[32px] font-bold text-[#2F0FD1]"
+          >
             CF
           </Link>
 
@@ -72,37 +79,7 @@ function RootLayout() {
                     {link.title === "Testimonials" ? (
                       <a
                         className="text-[#0D0516] hover:underline"
-                        href="#testimonials"
-                        onClick={(e) => {
-                          e.preventDefault();
-
-                          if (location.pathname === "/") {
-                            const el = document.querySelector("#testimonials");
-                            if (el) {
-                              el.scrollIntoView({ behavior: "smooth" });
-                              window.history.pushState(
-                                null,
-                                "",
-                                "#testimonials",
-                              );
-                            }
-                          } else {
-                            navigate("/", { replace: false });
-
-                            window.history.pushState(null, "", "#testimonials");
-
-                            setTimeout(() => {
-                              const checkExist = setInterval(() => {
-                                const el =
-                                  document.querySelector("#testimonials");
-                                if (el) {
-                                  el.scrollIntoView({ behavior: "smooth" });
-                                  clearInterval(checkExist);
-                                }
-                              }, 100);
-                            }, 400);
-                          }
-                        }}
+                        href={link.href}
                       >
                         {link.title}
                       </a>
@@ -147,56 +124,7 @@ function RootLayout() {
                             {link.title === "Testimonials" ? (
                               <a
                                 className="text-[#0D0516] hover:underline"
-                                href="#testimonials"
-                                onClick={(e) => {
-                                  e.preventDefault();
-                                  setSheetIsOpen(false);
-
-                                  const scrollToTestimonials = () => {
-                                    const el =
-                                      document.querySelector("#testimonials");
-                                    if (el) {
-                                      el.scrollIntoView({ behavior: "smooth" });
-
-                                      window.history.pushState(
-                                        null,
-                                        "",
-                                        "#testimonials",
-                                      );
-                                    }
-                                  };
-
-                                  if (location.pathname === "/") {
-                                    // Already on homepage, just scroll
-                                    setTimeout(
-                                      () => scrollToTestimonials(),
-                                      300,
-                                    );
-                                  } else {
-                                    // Navigate to homepage and scroll after navigation
-                                    navigate("/", { replace: false });
-
-                                    window.history.pushState(
-                                      null,
-                                      "",
-                                      "#testimonials",
-                                    );
-
-                                    // Wait for the homepage to mount
-                                    setTimeout(() => {
-                                      const checkExist = setInterval(() => {
-                                        const el =
-                                          document.querySelector(
-                                            "#testimonials",
-                                          );
-                                        if (el) {
-                                          scrollToTestimonials();
-                                          clearInterval(checkExist);
-                                        }
-                                      }, 100);
-                                    }, 400);
-                                  }
-                                }}
+                                href={link.href}
                               >
                                 {link.title}
                               </a>

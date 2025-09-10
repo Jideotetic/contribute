@@ -1,5 +1,7 @@
 import AuthButtons from "@/components/AuthButtons";
 import { Button } from "@/components/ui/button";
+import { useEffect } from "react";
+import { useLocation } from "react-router";
 
 const METRICS = [
   { title: "communities", value: "1,200" },
@@ -141,6 +143,21 @@ const TESTIMONIALS = [
 ];
 
 function HomePage() {
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.hash) {
+      const id = location.hash.replace("#", "");
+      const el = document.getElementById(id);
+      if (el) {
+        // Delay to ensure element is mounted
+        setTimeout(() => {
+          el.scrollIntoView({ behavior: "smooth" });
+        }, 200);
+      }
+    }
+  }, [location]);
+
   return (
     <>
       <div className="bg-linear-to-b from-white to-[#EDF2FF]">
