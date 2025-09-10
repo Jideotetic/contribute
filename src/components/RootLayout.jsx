@@ -16,7 +16,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { Menu } from "lucide-react";
-import { useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { Link, Outlet } from "react-router";
 import { Button } from "./ui/button";
 
@@ -65,12 +65,22 @@ function RootLayout() {
             {NAV_LINKS.map((link) => (
               <NavigationMenuItem key={link.title}>
                 <NavigationMenuLink asChild>
-                  <a
-                    href={link.href}
-                    className="text-[#0D0516] hover:underline"
-                  >
-                    {link.title}
-                  </a>
+                  {link.title === "Testimonials" ? (
+                    <a
+                      className="text-[#0D0516] hover:underline"
+                      href={link.href}
+                    >
+                      {" "}
+                      {link.title}
+                    </a>
+                  ) : (
+                    <Link
+                      className="text-[#0D0516] hover:underline"
+                      href={link.href}
+                    >
+                      {link.title}
+                    </Link>
+                  )}
                 </NavigationMenuLink>
               </NavigationMenuItem>
             ))}
@@ -90,7 +100,7 @@ function RootLayout() {
           <SheetContent className="bg-white">
             <SheetHeader className="sr-only">
               <SheetTitle>
-                <a href="/">CF</a>
+                <Link href="/">CF</Link>
               </SheetTitle>
               <SheetDescription>Mobile navigation</SheetDescription>
             </SheetHeader>
@@ -101,12 +111,35 @@ function RootLayout() {
                     <NavigationMenuItem key={link.title}>
                       <NavigationMenuLink asChild>
                         <SheetClose asChild>
-                          <a
-                            href={link.href}
-                            className="text-[#0D0516] hover:underline"
-                          >
-                            {link.title}
-                          </a>
+                          {link.title === "Testimonials" ? (
+                            <a
+                              className="text-[#0D0516] hover:underline"
+                              href={link.href}
+                              onClick={(e) => {
+                                e.preventDefault();
+
+                                setSheetIsOpen(false);
+
+                                setTimeout(() => {
+                                  const el =
+                                    document.querySelector("#testimonials");
+                                  if (el) {
+                                    el.scrollIntoView({ behavior: "smooth" });
+                                  }
+                                }, 300); // delay should match your sheet transition duration
+                              }}
+                            >
+                              {" "}
+                              {link.title}
+                            </a>
+                          ) : (
+                            <Link
+                              className="text-[#0D0516] hover:underline"
+                              href={link.href}
+                            >
+                              {link.title}
+                            </Link>
+                          )}
                         </SheetClose>
                       </NavigationMenuLink>
                     </NavigationMenuItem>
@@ -149,13 +182,24 @@ function RootLayout() {
 
           <div className="grid w-fit grid-cols-1 gap-5 lg:flex-1 lg:grid-cols-3">
             {FOOTER_LINKS.map((link, i) => (
-              <Link
-                className="font-normal text-[#1C1C1E] hover:underline"
-                key={i}
-                href={link.href}
-              >
-                {link.title}
-              </Link>
+              <Fragment key={i}>
+                {link.title === "Testimonials" ? (
+                  <a
+                    className="font-normal text-[#1C1C1E] hover:underline"
+                    href={link.href}
+                  >
+                    {" "}
+                    {link.title}
+                  </a>
+                ) : (
+                  <Link
+                    className="font-normal text-[#1C1C1E] hover:underline"
+                    href={link.href}
+                  >
+                    {link.title}
+                  </Link>
+                )}
+              </Fragment>
             ))}
           </div>
         </div>
