@@ -143,43 +143,44 @@ const TESTIMONIALS = [
 function HomePage() {
   return (
     <>
-      <div className="mb-10 space-y-16 bg-linear-to-b from-white to-[#EDF2FF] px-4">
-        <div className="space-y-12">
-          <div className="mx-auto max-w-[1200px] space-y-8 text-center text-[#1C1C1E]">
-            <h1 className="text-[36px] font-extrabold md:text-[64px]">
-              Powering Communities, One Contribution at a Time
-            </h1>
+      <div className="bg-linear-to-b from-white to-[#EDF2FF]">
+        <div className="mx-auto w-full max-w-[1200px] space-y-14 px-5">
+          <div className="space-y-12">
+            <div className="space-y-8 text-center text-[#1C1C1E]">
+              <h1 className="text-[36px] font-extrabold md:text-[64px]">
+                Powering Communities, One Contribution at a Time
+              </h1>
 
-            <p className="mx-auto max-w-[842px] font-light md:text-[20px]">
-              Contribute.fi connects projects with passionate contributors
-              through smart contracts, wallet-linked reputation, and transparent
-              rewards — built on Soroban & Stellar.
-            </p>
+              <p className="mx-auto max-w-[842px] font-light md:text-[20px]">
+                Contribute.fi connects projects with passionate contributors
+                through smart contracts, wallet-linked reputation, and
+                transparent rewards — built on Soroban & Stellar.
+              </p>
+            </div>
+
+            {/* Buttons */}
+
+            <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
+              <Button className="w-full cursor-pointer rounded-md bg-[#2F0FD1] px-8 py-4 hover:bg-[#2F0FD1]/70 sm:w-fit">
+                Explore Communities
+              </Button>
+              <Button
+                variant="outline"
+                className="w-full cursor-pointer rounded-md bg-[#EDF2FF] px-8 py-4 text-[#2F0FD1] hover:text-[#2F0FD1] sm:w-fit"
+              >
+                View Tasks
+              </Button>
+            </div>
           </div>
 
-          {/* Buttons */}
+          {/* Image */}
 
-          <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <Button className="w-full cursor-pointer rounded-md bg-[#2F0FD1] px-8 py-4 hover:bg-[#2F0FD1]/70 sm:w-fit">
-              Explore Communities
-            </Button>
-            <Button
-              variant="outline"
-              className="w-full cursor-pointer rounded-md bg-[#EDF2FF] px-8 py-4 text-[#2F0FD1] hover:text-[#2F0FD1] sm:w-fit"
-            >
-              View Tasks
-            </Button>
-          </div>
-        </div>
-
-        {/* Image */}
-        <div>
-          <img className="w-full" src="/Frame.svg" alt="" />
+          <img className="h-auto w-full" src="/Frame.svg" alt="" />
         </div>
       </div>
 
-      <div className="mb-10 space-y-4 bg-white px-4">
-        <div className="mx-auto max-w-[1200px] space-y-8 text-center text-[#050215]">
+      <div className="mx-auto w-full max-w-[1200px] space-y-8 bg-white px-5 pt-10 md:space-y-16 md:pt-[104px]">
+        <div className="mx-auto max-w-[1200px] space-y-4 text-center text-[#050215]">
           <h2 className="text-[32px] font-extrabold md:text-[44px]">
             A Growing Network of Builders
           </h2>
@@ -190,32 +191,34 @@ function HomePage() {
           </p>
         </div>
 
-        <div className="grid grid-cols-2 gap-1 sm:grid-cols-4 lg:px-20">
+        <div className="grid grid-cols-2 gap-1 md:grid-cols-4 lg:px-10 [@media(max-width:379px)]:grid-cols-1">
           {METRICS.map((metric, i) => (
             <div
               key={i}
-              className={`flex flex-col justify-center rounded-[8px] bg-[#F7F9FD] px-[20px] py-[40px] ${metric.title === "paid out" && "sm:order-4"}`}
+              className={`flex flex-col justify-center rounded-[8px] bg-[#F7F9FD] px-[20px] py-[40px] [@media(max-width:379px)]:items-center ${metric.title === "paid out" && "sm:order-4 [@media(max-width:379px)]:order-4"}`}
             >
               <div
-                className={`${metric.title === "communities" || metric.title === "contributors" ? "text-[#2F0FD1]" : "text-[#1082E4]"} text-[20px] font-bold`}
+                className={`${metric.title === "communities" || metric.title === "contributors" ? "text-[#2F0FD1]" : "text-[#1082E4]"} text-[32px] font-bold lg:text-[48px]`}
               >
                 {metric.title === "paid out" && "$"}
-                {metric.value}
+                {metric.value} {metric.title !== "contributors" && "+"}
               </div>
-              <div className="text-[15px] text-[#636366]">{metric.title}</div>
+              <div className="text-[15px] text-[#636366] lg:text-[20px]">
+                {metric.title}
+              </div>
             </div>
           ))}
         </div>
       </div>
 
-      <div className="mb-10 flex flex-col gap-12 px-4 lg:flex-row lg:gap-20 lg:px-20">
-        <div className="flex flex-col gap-6">
-          <div className="w-fit rounded-[58px] bg-[#E2F1FE] px-8 py-2 text-[20px] text-[#1082E4]">
+      <div className="mx-auto flex w-full max-w-[1200px] flex-col gap-12 bg-white px-5 py-10 pb-10 md:py-[104px] lg:flex-row lg:gap-20 lg:px-10">
+        <div className="flex flex-col gap-6 lg:max-w-[576px]">
+          <div className="lg-text-[24px] w-fit rounded-[58px] bg-[#E2F1FE] px-8 py-2 text-[20px] font-light text-[#1082E4] lg:px-8 lg:py-3">
             About Contribute
           </div>
 
           <div className="space-y-8 text-[#050215]">
-            <h2 className="text-[30px] font-extrabold md:text-[44px]">
+            <h2 className="text-[30px] font-extrabold md:text-[40px]">
               A thriving ecosystem of builders and innovators
             </h2>
 
@@ -237,77 +240,79 @@ function HomePage() {
         />
       </div>
 
-      <div className="mb-10 space-y-8 bg-[#F7F9FD] px-4">
-        <div className="mx-auto max-w-[1200px] space-y-8 text-center text-[#050215]">
-          <h2 className="text-[32px] font-extrabold md:text-[44px]">
-            Explore Available Tasks
-          </h2>
+      <div className="bg-[#F7F9FD]">
+        <div className="mx-auto w-full max-w-[1200px] space-y-8 px-5 pt-10 md:py-[104px]">
+          <div className="mx-auto max-w-[1200px] space-y-8 text-center text-[#050215]">
+            <h2 className="text-[32px] font-extrabold md:text-[44px]">
+              Explore Available Tasks
+            </h2>
 
-          <p className="mx-auto max-w-[800px] text-[18px] font-light md:text-[20px]">
-            Discover the most active opportunities from communities making real
-            impact
-          </p>
-        </div>
+            <p className="mx-auto max-w-[800px] text-[18px] font-light md:text-[20px]">
+              Discover the most active opportunities from communities making
+              real impact
+            </p>
+          </div>
 
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:px-10">
-          {TASKS.map((task, i) => (
-            <div
-              key={i}
-              className={`flex flex-col justify-center gap-8 rounded-[8px] border-2 border-[#F0F4FD] bg-white px-[24px] py-[28px]`}
-            >
-              <div className="space-y-4">
-                <div className="flex flex-wrap gap-2">
-                  {task.tag.map((t, i) => (
-                    <div
-                      className={`rounded-[4px] px-[12px] py-[5px] text-sm font-normal text-[#313131] ${TASK_TAG_BG[t]}`}
-                      key={i}
-                    >
-                      {t}
-                    </div>
-                  ))}
-                </div>
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:px-10">
+            {TASKS.map((task, i) => (
+              <div
+                key={i}
+                className={`flex flex-col justify-center gap-8 rounded-[8px] border-2 border-[#F0F4FD] bg-white px-[24px] py-[28px]`}
+              >
+                <div className="space-y-4">
+                  <div className="flex flex-wrap gap-2">
+                    {task.tag.map((t, i) => (
+                      <div
+                        className={`rounded-[4px] px-[12px] py-[5px] text-sm font-normal text-[#313131] ${TASK_TAG_BG[t]}`}
+                        key={i}
+                      >
+                        {t}
+                      </div>
+                    ))}
+                  </div>
 
-                <div className="flex items-center gap-2">
-                  <p className="flex shrink-0 gap-1.5 font-semibold text-[#2F0FD1]">
-                    <img src="/Gift.svg" alt="" />
-                    {task.amount} XLM
-                  </p>
-                  <div className="flex shrink-0 items-center gap-1">
-                    <div className="h-1 w-1 rounded-full bg-[#636366]" />
-                    <p className="flex gap-1.5 font-semibold text-[#8791A7]">
-                      <img src="/UsersThree.svg" alt="" />{" "}
-                      {task.numberOfMembers}
+                  <div className="flex items-center gap-2">
+                    <p className="flex shrink-0 gap-1.5 font-semibold text-[#2F0FD1]">
+                      <img src="/Gift.svg" alt="" />
+                      {task.amount} XLM
                     </p>
+                    <div className="flex shrink-0 items-center gap-1">
+                      <div className="h-1 w-1 rounded-full bg-[#636366]" />
+                      <p className="flex gap-1.5 font-semibold text-[#8791A7]">
+                        <img src="/UsersThree.svg" alt="" />{" "}
+                        {task.numberOfMembers}
+                      </p>
+                    </div>
                   </div>
                 </div>
+                <div className={`space-y-2`}>
+                  <p className="max-w-full truncate overflow-hidden font-semibold whitespace-nowrap text-[#1C1C1E]">
+                    {task.title}
+                  </p>
+                  <p className="max-w-full truncate overflow-hidden text-[15px] font-normal whitespace-nowrap text-[#636366]">
+                    by {task.community}
+                  </p>
+                </div>
               </div>
-              <div className={`space-y-2`}>
-                <p className="max-w-full truncate overflow-hidden font-semibold whitespace-nowrap text-[#1C1C1E]">
-                  {task.title}
-                </p>
-                <p className="max-w-full truncate overflow-hidden text-[15px] font-normal whitespace-nowrap text-[#636366]">
-                  by {task.community}
-                </p>
-              </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
 
-        <div className="flex justify-center">
-          <Button className="cursor-pointer rounded-md bg-[#2F0FD1] px-8 py-4 hover:bg-[#2F0FD1]/70">
-            See all Tasks
-          </Button>
+          <div className="flex justify-center">
+            <Button className="cursor-pointer rounded-md bg-[#2F0FD1] px-8 py-4 hover:bg-[#2F0FD1]/70">
+              See all Tasks
+            </Button>
+          </div>
         </div>
       </div>
 
-      <div className="mb-10 flex flex-col gap-12 px-4 lg:flex-row lg:gap-20 lg:px-20">
-        <div className="flex flex-col gap-6 lg:order-2">
-          <div className="w-fit rounded-[58px] bg-[#E2F1FE] px-8 py-2 text-[20px] text-[#1082E4]">
+      <div className="mx-auto flex w-full max-w-[1200px] flex-col gap-12 bg-white px-5 py-10 pb-10 md:py-[104px] lg:flex-row lg:gap-20 lg:px-10">
+        <div className="flex flex-col gap-6 lg:order-2 lg:max-w-[576px]">
+          <div className="lg-text-[24px] w-fit rounded-[58px] bg-[#E2F1FE] px-8 py-2 text-[20px] font-light text-[#1082E4] lg:px-8 lg:py-3">
             Create, Work & Earn
           </div>
 
           <div className="space-y-8 text-[#050215]">
-            <h2 className="text-[30px] font-extrabold md:text-[44px]">
+            <h2 className="text-[30px] font-extrabold md:text-[40px]">
               Build, Contribute and Get Rewarded
             </h2>
 
@@ -329,84 +334,89 @@ function HomePage() {
         />
       </div>
 
-      <div className="mb-10 space-y-8 bg-[#F7F9FD] px-4">
-        <div className="mx-auto max-w-[1200px] space-y-8 text-center text-[#050215]">
-          <h2 className="text-[32px] font-extrabold md:text-[44px]">
-            Featured Communities
-          </h2>
+      <div className="bg-[#F7F9FD]">
+        <div className="mx-auto w-full max-w-[1200px] space-y-8 px-5 pt-10 md:py-[104px]">
+          <div className="mx-auto max-w-[1200px] space-y-8 text-center text-[#050215]">
+            <h2 className="text-[32px] font-extrabold md:text-[44px]">
+              Featured Communities
+            </h2>
 
-          <p className="mx-auto max-w-[800px] text-[18px] font-light md:text-[20px]">
-            Join thousands of contributors making impact across decentralized
-            communities.
-          </p>
-        </div>
+            <p className="mx-auto max-w-[800px] text-[18px] font-light md:text-[20px]">
+              Join thousands of contributors making impact across decentralized
+              communities.
+            </p>
+          </div>
 
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:px-10">
-          {COMMUNITIES.map((community, i) => (
-            <div
-              key={i}
-              className={`flex flex-col justify-center gap-8 rounded-[8px] border-2 border-[#F0F4FD] bg-white px-[24px] py-[28px]`}
-            >
-              <div className="space-y-4">
-                <div className="flex items-start justify-between">
-                  <div className="flex items-start gap-3">
-                    <img src="/ChartPolar.svg" alt="" />
-                    <div className="space-y-1">
-                      <p className="font-semibold text-[#050215]">
-                        {community.name}
-                      </p>
-                      <p className="flex gap-1 text-[14px] text-[#2F0FD1]">
-                        <img src="UsersThree (1).svg" alt="" />{" "}
-                        <span className="shrink-0">
-                          {community.numberOfMembers} members
-                        </span>
-                      </p>
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:px-10">
+            {COMMUNITIES.map((community, i) => (
+              <div
+                key={i}
+                className={`flex flex-col justify-center gap-8 rounded-[8px] border-2 border-[#F0F4FD] bg-white px-[24px] py-[28px]`}
+              >
+                <div className="space-y-4">
+                  <div className="flex items-start justify-between">
+                    <div className="flex items-start gap-3">
+                      <img src="/ChartPolar.svg" alt="" />
+                      <div className="space-y-1">
+                        <p className="font-semibold text-[#050215]">
+                          {community.name}
+                        </p>
+                        <p className="flex gap-1 text-[14px] text-[#2F0FD1]">
+                          <img src="UsersThree (1).svg" alt="" />{" "}
+                          <span className="shrink-0">
+                            {community.numberOfMembers} members
+                          </span>
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="flex gap-2">
+                      {community.tag.map((t, i) => (
+                        <div
+                          className={`rounded-[4px] px-[12px] py-[5px] text-sm font-normal text-[#313131] ${COMMUNITY_TAG_BG[t]}`}
+                          key={i}
+                        >
+                          {t}
+                        </div>
+                      ))}
                     </div>
                   </div>
 
-                  <div className="flex gap-2">
-                    {community.tag.map((t, i) => (
-                      <div
-                        className={`rounded-[4px] px-[12px] py-[5px] text-sm font-normal text-[#313131] ${COMMUNITY_TAG_BG[t]}`}
-                        key={i}
-                      >
-                        {t}
-                      </div>
-                    ))}
-                  </div>
+                  <p className="text-sm font-light text-[#050215]">
+                    {community.description}
+                  </p>
                 </div>
 
-                <p className="text-sm font-light text-[#050215]">
-                  {community.description}
-                </p>
-              </div>
+                <div className="flex items-end justify-between rounded-[4px] border-[0.5px] border-[#F0F4FD] bg-[#F7F9FD] p-4">
+                  <div className="space-y-2 text-sm font-normal text-[#525866]">
+                    <div className="flex gap-1.5">
+                      <img src="/Briefcase.svg" alt="" />
+                      <span> {community.newTask} new tasks</span>
+                    </div>
+                    <div className="flex gap-1.5">
+                      <img src="/Coins.svg" alt="" />
+                      <span>{community.amountSpent} spent</span>
+                    </div>
+                  </div>
 
-              <div className="flex items-end justify-between rounded-[4px] border-[0.5px] border-[#F0F4FD] bg-[#F7F9FD] p-4">
-                <div className="space-y-2 text-sm font-normal text-[#525866]">
-                  <div className="flex gap-1.5">
-                    <img src="/Briefcase.svg" alt="" />
-                    <span> {community.newTask} new tasks</span>
-                  </div>
-                  <div className="flex gap-1.5">
-                    <img src="/Coins.svg" alt="" />
-                    <span>{community.amountSpent} spent</span>
-                  </div>
+                  <button className="font-medium text-[#2F0FD1]">
+                    {" "}
+                    + Join
+                  </button>
                 </div>
-
-                <button className="font-medium text-[#2F0FD1]"> + Join</button>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
 
-        <div className="flex justify-center">
-          <Button className="cursor-pointer rounded-md bg-[#2F0FD1] px-8 py-4 hover:bg-[#2F0FD1]/70">
-            Explore all Communities
-          </Button>
+          <div className="flex justify-center">
+            <Button className="cursor-pointer rounded-md bg-[#2F0FD1] px-8 py-4 hover:bg-[#2F0FD1]/70">
+              Explore all Communities
+            </Button>
+          </div>
         </div>
       </div>
 
-      <div className="mb-10 space-y-8 px-4 lg:px-10">
+      <div className="mx-auto mb-10 w-full max-w-[1200px] space-y-8 px-4 py-10 md:py-[104px] lg:px-10">
         <div className="mx-auto max-w-[1200px] space-y-8 text-center text-[#050215]">
           <h2
             id="testimonials"
