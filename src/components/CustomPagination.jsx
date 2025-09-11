@@ -40,7 +40,7 @@ function CustomPagination({ currentPage, totalPages, onPageChange }) {
 
   return (
     <Pagination className="flex justify-end">
-      <PaginationContent>
+      <PaginationContent className="overflow-x-auto whitespace-nowrap">
         <PaginationItem>
           <PaginationPrevious
             disabled={currentPage === 1}
