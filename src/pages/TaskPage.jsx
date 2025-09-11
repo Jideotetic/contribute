@@ -1,12 +1,643 @@
-import CommunitiesCard from "@/components/CommunitiesCard";
+import CustomPagination from "@/components/CustomPagination";
 import Filter from "@/components/Filter";
 import TasksCard from "@/components/TasksCard";
-import { Button } from "@/components/ui/button";
 import { Search } from "lucide-react";
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router";
 
+const TASKS_PER_PAGE = 15;
+
 const TASKS = [
+  {
+    title: "Landing Page and Web App Redesign",
+    amount: "45",
+    community: "The Starks",
+    tag: ["Design", "Development", "Growth"],
+    numberOfMembers: 24,
+  },
+  {
+    title: "Identify and report security bugs",
+    amount: "45",
+    community: "JayCube",
+    tag: ["Development", "QA"],
+    numberOfMembers: 24,
+  },
+  {
+    title: "Landing Page and Web App Redesign",
+    amount: "45",
+    community: "The Starks",
+    tag: ["Design"],
+    numberOfMembers: 24,
+  },
+  {
+    title: "Landing Page and Web App Redesign",
+    amount: "45",
+    community: "The Starks",
+    tag: ["Design"],
+    numberOfMembers: 24,
+  },
+  {
+    title: "Landing Page and Web App Redesign",
+    amount: "45",
+    community: "The Starks",
+    tag: ["Design"],
+    numberOfMembers: 24,
+  },
+  {
+    title: "Landing Page and Web App Redesign",
+    amount: "45",
+    community: "The Starks",
+    tag: ["Design"],
+    numberOfMembers: 24,
+  },
+  {
+    title: "Landing Page and Web App Redesign",
+    amount: "45",
+    community: "The Starks",
+    tag: ["Design", "Development", "Growth"],
+    numberOfMembers: 24,
+  },
+  {
+    title: "Identify and report security bugs",
+    amount: "45",
+    community: "JayCube",
+    tag: ["Development", "QA"],
+    numberOfMembers: 24,
+  },
+  {
+    title: "Landing Page and Web App Redesign",
+    amount: "45",
+    community: "The Starks",
+    tag: ["Design"],
+    numberOfMembers: 24,
+  },
+  {
+    title: "Landing Page and Web App Redesign",
+    amount: "45",
+    community: "The Starks",
+    tag: ["Design"],
+    numberOfMembers: 24,
+  },
+  {
+    title: "Landing Page and Web App Redesign",
+    amount: "45",
+    community: "The Starks",
+    tag: ["Design"],
+    numberOfMembers: 24,
+  },
+  {
+    title: "Landing Page and Web App Redesign",
+    amount: "45",
+    community: "The Starks",
+    tag: ["Design"],
+    numberOfMembers: 24,
+  },
+  {
+    title: "Landing Page and Web App Redesign",
+    amount: "45",
+    community: "The Starks",
+    tag: ["Design", "Development", "Growth"],
+    numberOfMembers: 24,
+  },
+  {
+    title: "Identify and report security bugs",
+    amount: "45",
+    community: "JayCube",
+    tag: ["Development", "QA"],
+    numberOfMembers: 24,
+  },
+  {
+    title: "Landing Page and Web App Redesign",
+    amount: "45",
+    community: "The Starks",
+    tag: ["Design"],
+    numberOfMembers: 24,
+  },
+  {
+    title: "Landing Page and Web App Redesign",
+    amount: "45",
+    community: "The Starks",
+    tag: ["Design"],
+    numberOfMembers: 24,
+  },
+  {
+    title: "Landing Page and Web App Redesign",
+    amount: "45",
+    community: "The Starks",
+    tag: ["Design"],
+    numberOfMembers: 24,
+  },
+  {
+    title: "Landing Page and Web App Redesign",
+    amount: "45",
+    community: "The Starks",
+    tag: ["Design"],
+    numberOfMembers: 24,
+  },
+  {
+    title: "Landing Page and Web App Redesign",
+    amount: "45",
+    community: "The Starks",
+    tag: ["Design", "Development", "Growth"],
+    numberOfMembers: 24,
+  },
+  {
+    title: "Identify and report security bugs",
+    amount: "45",
+    community: "JayCube",
+    tag: ["Development", "QA"],
+    numberOfMembers: 24,
+  },
+  {
+    title: "Landing Page and Web App Redesign",
+    amount: "45",
+    community: "The Starks",
+    tag: ["Design"],
+    numberOfMembers: 24,
+  },
+  {
+    title: "Landing Page and Web App Redesign",
+    amount: "45",
+    community: "The Starks",
+    tag: ["Design"],
+    numberOfMembers: 24,
+  },
+  {
+    title: "Landing Page and Web App Redesign",
+    amount: "45",
+    community: "The Starks",
+    tag: ["Design"],
+    numberOfMembers: 24,
+  },
+  {
+    title: "Landing Page and Web App Redesign",
+    amount: "45",
+    community: "The Starks",
+    tag: ["Design"],
+    numberOfMembers: 24,
+  },
+  {
+    title: "Landing Page and Web App Redesign",
+    amount: "45",
+    community: "The Starks",
+    tag: ["Design", "Development", "Growth"],
+    numberOfMembers: 24,
+  },
+  {
+    title: "Identify and report security bugs",
+    amount: "45",
+    community: "JayCube",
+    tag: ["Development", "QA"],
+    numberOfMembers: 24,
+  },
+  {
+    title: "Landing Page and Web App Redesign",
+    amount: "45",
+    community: "The Starks",
+    tag: ["Design"],
+    numberOfMembers: 24,
+  },
+  {
+    title: "Landing Page and Web App Redesign",
+    amount: "45",
+    community: "The Starks",
+    tag: ["Design"],
+    numberOfMembers: 24,
+  },
+  {
+    title: "Landing Page and Web App Redesign",
+    amount: "45",
+    community: "The Starks",
+    tag: ["Design"],
+    numberOfMembers: 24,
+  },
+  {
+    title: "Landing Page and Web App Redesign",
+    amount: "45",
+    community: "The Starks",
+    tag: ["Design"],
+    numberOfMembers: 24,
+  },
+  {
+    title: "Landing Page and Web App Redesign",
+    amount: "45",
+    community: "The Starks",
+    tag: ["Design", "Development", "Growth"],
+    numberOfMembers: 24,
+  },
+  {
+    title: "Identify and report security bugs",
+    amount: "45",
+    community: "JayCube",
+    tag: ["Development", "QA"],
+    numberOfMembers: 24,
+  },
+  {
+    title: "Landing Page and Web App Redesign",
+    amount: "45",
+    community: "The Starks",
+    tag: ["Design"],
+    numberOfMembers: 24,
+  },
+  {
+    title: "Landing Page and Web App Redesign",
+    amount: "45",
+    community: "The Starks",
+    tag: ["Design"],
+    numberOfMembers: 24,
+  },
+  {
+    title: "Landing Page and Web App Redesign",
+    amount: "45",
+    community: "The Starks",
+    tag: ["Design"],
+    numberOfMembers: 24,
+  },
+  {
+    title: "Landing Page and Web App Redesign",
+    amount: "45",
+    community: "The Starks",
+    tag: ["Design"],
+    numberOfMembers: 24,
+  },
+  {
+    title: "Landing Page and Web App Redesign",
+    amount: "45",
+    community: "The Starks",
+    tag: ["Design", "Development", "Growth"],
+    numberOfMembers: 24,
+  },
+  {
+    title: "Identify and report security bugs",
+    amount: "45",
+    community: "JayCube",
+    tag: ["Development", "QA"],
+    numberOfMembers: 24,
+  },
+  {
+    title: "Landing Page and Web App Redesign",
+    amount: "45",
+    community: "The Starks",
+    tag: ["Design"],
+    numberOfMembers: 24,
+  },
+  {
+    title: "Landing Page and Web App Redesign",
+    amount: "45",
+    community: "The Starks",
+    tag: ["Design"],
+    numberOfMembers: 24,
+  },
+  {
+    title: "Landing Page and Web App Redesign",
+    amount: "45",
+    community: "The Starks",
+    tag: ["Design"],
+    numberOfMembers: 24,
+  },
+  {
+    title: "Landing Page and Web App Redesign",
+    amount: "45",
+    community: "The Starks",
+    tag: ["Design"],
+    numberOfMembers: 24,
+  },
+  {
+    title: "Landing Page and Web App Redesign",
+    amount: "45",
+    community: "The Starks",
+    tag: ["Design", "Development", "Growth"],
+    numberOfMembers: 24,
+  },
+  {
+    title: "Identify and report security bugs",
+    amount: "45",
+    community: "JayCube",
+    tag: ["Development", "QA"],
+    numberOfMembers: 24,
+  },
+  {
+    title: "Landing Page and Web App Redesign",
+    amount: "45",
+    community: "The Starks",
+    tag: ["Design"],
+    numberOfMembers: 24,
+  },
+  {
+    title: "Landing Page and Web App Redesign",
+    amount: "45",
+    community: "The Starks",
+    tag: ["Design"],
+    numberOfMembers: 24,
+  },
+  {
+    title: "Landing Page and Web App Redesign",
+    amount: "45",
+    community: "The Starks",
+    tag: ["Design"],
+    numberOfMembers: 24,
+  },
+  {
+    title: "Landing Page and Web App Redesign",
+    amount: "45",
+    community: "The Starks",
+    tag: ["Design"],
+    numberOfMembers: 24,
+  },
+  {
+    title: "Landing Page and Web App Redesign",
+    amount: "45",
+    community: "The Starks",
+    tag: ["Design", "Development", "Growth"],
+    numberOfMembers: 24,
+  },
+  {
+    title: "Identify and report security bugs",
+    amount: "45",
+    community: "JayCube",
+    tag: ["Development", "QA"],
+    numberOfMembers: 24,
+  },
+  {
+    title: "Landing Page and Web App Redesign",
+    amount: "45",
+    community: "The Starks",
+    tag: ["Design"],
+    numberOfMembers: 24,
+  },
+  {
+    title: "Landing Page and Web App Redesign",
+    amount: "45",
+    community: "The Starks",
+    tag: ["Design"],
+    numberOfMembers: 24,
+  },
+  {
+    title: "Landing Page and Web App Redesign",
+    amount: "45",
+    community: "The Starks",
+    tag: ["Design"],
+    numberOfMembers: 24,
+  },
+  {
+    title: "Landing Page and Web App Redesign",
+    amount: "45",
+    community: "The Starks",
+    tag: ["Design"],
+    numberOfMembers: 24,
+  },
+  {
+    title: "Landing Page and Web App Redesign",
+    amount: "45",
+    community: "The Starks",
+    tag: ["Design", "Development", "Growth"],
+    numberOfMembers: 24,
+  },
+  {
+    title: "Identify and report security bugs",
+    amount: "45",
+    community: "JayCube",
+    tag: ["Development", "QA"],
+    numberOfMembers: 24,
+  },
+  {
+    title: "Landing Page and Web App Redesign",
+    amount: "45",
+    community: "The Starks",
+    tag: ["Design"],
+    numberOfMembers: 24,
+  },
+  {
+    title: "Landing Page and Web App Redesign",
+    amount: "45",
+    community: "The Starks",
+    tag: ["Design"],
+    numberOfMembers: 24,
+  },
+  {
+    title: "Landing Page and Web App Redesign",
+    amount: "45",
+    community: "The Starks",
+    tag: ["Design"],
+    numberOfMembers: 24,
+  },
+  {
+    title: "Landing Page and Web App Redesign",
+    amount: "45",
+    community: "The Starks",
+    tag: ["Design"],
+    numberOfMembers: 24,
+  },
+  {
+    title: "Landing Page and Web App Redesign",
+    amount: "45",
+    community: "The Starks",
+    tag: ["Design", "Development", "Growth"],
+    numberOfMembers: 24,
+  },
+  {
+    title: "Identify and report security bugs",
+    amount: "45",
+    community: "JayCube",
+    tag: ["Development", "QA"],
+    numberOfMembers: 24,
+  },
+  {
+    title: "Landing Page and Web App Redesign",
+    amount: "45",
+    community: "The Starks",
+    tag: ["Design"],
+    numberOfMembers: 24,
+  },
+  {
+    title: "Landing Page and Web App Redesign",
+    amount: "45",
+    community: "The Starks",
+    tag: ["Design"],
+    numberOfMembers: 24,
+  },
+  {
+    title: "Landing Page and Web App Redesign",
+    amount: "45",
+    community: "The Starks",
+    tag: ["Design"],
+    numberOfMembers: 24,
+  },
+  {
+    title: "Landing Page and Web App Redesign",
+    amount: "45",
+    community: "The Starks",
+    tag: ["Design"],
+    numberOfMembers: 24,
+  },
+  {
+    title: "Landing Page and Web App Redesign",
+    amount: "45",
+    community: "The Starks",
+    tag: ["Design", "Development", "Growth"],
+    numberOfMembers: 24,
+  },
+  {
+    title: "Identify and report security bugs",
+    amount: "45",
+    community: "JayCube",
+    tag: ["Development", "QA"],
+    numberOfMembers: 24,
+  },
+  {
+    title: "Landing Page and Web App Redesign",
+    amount: "45",
+    community: "The Starks",
+    tag: ["Design"],
+    numberOfMembers: 24,
+  },
+  {
+    title: "Landing Page and Web App Redesign",
+    amount: "45",
+    community: "The Starks",
+    tag: ["Design"],
+    numberOfMembers: 24,
+  },
+  {
+    title: "Landing Page and Web App Redesign",
+    amount: "45",
+    community: "The Starks",
+    tag: ["Design"],
+    numberOfMembers: 24,
+  },
+  {
+    title: "Landing Page and Web App Redesign",
+    amount: "45",
+    community: "The Starks",
+    tag: ["Design"],
+    numberOfMembers: 24,
+  },
+  {
+    title: "Landing Page and Web App Redesign",
+    amount: "45",
+    community: "The Starks",
+    tag: ["Design", "Development", "Growth"],
+    numberOfMembers: 24,
+  },
+  {
+    title: "Identify and report security bugs",
+    amount: "45",
+    community: "JayCube",
+    tag: ["Development", "QA"],
+    numberOfMembers: 24,
+  },
+  {
+    title: "Landing Page and Web App Redesign",
+    amount: "45",
+    community: "The Starks",
+    tag: ["Design"],
+    numberOfMembers: 24,
+  },
+  {
+    title: "Landing Page and Web App Redesign",
+    amount: "45",
+    community: "The Starks",
+    tag: ["Design"],
+    numberOfMembers: 24,
+  },
+  {
+    title: "Landing Page and Web App Redesign",
+    amount: "45",
+    community: "The Starks",
+    tag: ["Design"],
+    numberOfMembers: 24,
+  },
+  {
+    title: "Landing Page and Web App Redesign",
+    amount: "45",
+    community: "The Starks",
+    tag: ["Design"],
+    numberOfMembers: 24,
+  },
+  {
+    title: "Landing Page and Web App Redesign",
+    amount: "45",
+    community: "The Starks",
+    tag: ["Design", "Development", "Growth"],
+    numberOfMembers: 24,
+  },
+  {
+    title: "Identify and report security bugs",
+    amount: "45",
+    community: "JayCube",
+    tag: ["Development", "QA"],
+    numberOfMembers: 24,
+  },
+  {
+    title: "Landing Page and Web App Redesign",
+    amount: "45",
+    community: "The Starks",
+    tag: ["Design"],
+    numberOfMembers: 24,
+  },
+  {
+    title: "Landing Page and Web App Redesign",
+    amount: "45",
+    community: "The Starks",
+    tag: ["Design"],
+    numberOfMembers: 24,
+  },
+  {
+    title: "Landing Page and Web App Redesign",
+    amount: "45",
+    community: "The Starks",
+    tag: ["Design"],
+    numberOfMembers: 24,
+  },
+  {
+    title: "Landing Page and Web App Redesign",
+    amount: "45",
+    community: "The Starks",
+    tag: ["Design"],
+    numberOfMembers: 24,
+  },
+  {
+    title: "Landing Page and Web App Redesign",
+    amount: "45",
+    community: "The Starks",
+    tag: ["Design", "Development", "Growth"],
+    numberOfMembers: 24,
+  },
+  {
+    title: "Identify and report security bugs",
+    amount: "45",
+    community: "JayCube",
+    tag: ["Development", "QA"],
+    numberOfMembers: 24,
+  },
+  {
+    title: "Landing Page and Web App Redesign",
+    amount: "45",
+    community: "The Starks",
+    tag: ["Design"],
+    numberOfMembers: 24,
+  },
+  {
+    title: "Landing Page and Web App Redesign",
+    amount: "45",
+    community: "The Starks",
+    tag: ["Design"],
+    numberOfMembers: 24,
+  },
+  {
+    title: "Landing Page and Web App Redesign",
+    amount: "45",
+    community: "The Starks",
+    tag: ["Design"],
+    numberOfMembers: 24,
+  },
+  {
+    title: "Landing Page and Web App Redesign",
+    amount: "45",
+    community: "The Starks",
+    tag: ["Design"],
+    numberOfMembers: 24,
+  },
   {
     title: "Landing Page and Web App Redesign",
     amount: "45",
@@ -53,6 +684,14 @@ const TASKS = [
 
 function TaskPage() {
   const navigate = useNavigate();
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const totalTasks = TASKS.length;
+  const totalPages = Math.ceil(totalTasks / TASKS_PER_PAGE);
+
+  const startIndex = (currentPage - 1) * TASKS_PER_PAGE;
+  const currentTasks = TASKS.slice(startIndex, startIndex + TASKS_PER_PAGE);
+
   return (
     <div className="bg-white">
       <div className="mx-auto w-full max-w-[1200px] space-y-8 px-5 pb-10 lg:px-10">
@@ -67,7 +706,7 @@ function TaskPage() {
         <div className="flex flex-wrap items-end justify-between gap-4 lg:items-end">
           <div className="text-[#050215]">
             <h2 className="text-[24px] font-extrabold md:text-[44px]">
-              Available Tasks ({TASKS.length})
+              Available Tasks ({totalTasks})
             </h2>
             <p className="font-light md:text-[20px]">
               Explore list of available tasks
@@ -94,16 +733,16 @@ function TaskPage() {
         </div>
 
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {TASKS.map((task, i) => (
+          {currentTasks.map((task, i) => (
             <TasksCard task={task} key={i} />
           ))}
         </div>
 
-        <div className="flex justify-end">
-          <Button className="cursor-pointer rounded-md bg-[#2F0FD1] px-8 py-5 hover:bg-[#2F0FD1]/70">
-            Explore all task
-          </Button>
-        </div>
+        <CustomPagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          onPageChange={(page) => setCurrentPage(page)}
+        />
       </div>
     </div>
   );
