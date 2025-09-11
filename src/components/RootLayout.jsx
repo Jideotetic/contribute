@@ -14,22 +14,7 @@ import { Fragment, useEffect, useState } from "react";
 import { Link, NavLink, Outlet, useNavigate } from "react-router";
 import { Button } from "./ui/button";
 import ScrollToTop from "./ScrollToTop";
-
-const NAV_LINKS = [
-  { title: "Communities", href: "/communities" },
-  { title: "Tasks", href: "/tasks" },
-  { title: "Testimonials", href: "/#testimonials" },
-  { title: "Learn More", href: "/learn-more" },
-];
-
-const FOOTER_LINKS = [
-  { title: "Communities", href: "/communities" },
-  { title: "Testimonials", href: "/#testimonials" },
-  { title: "Tasks", href: "/tasks" },
-  { title: "Terms of Use", href: "/terms-of-use" },
-  { title: "Learn More", href: "/learn-more" },
-  { title: "Privacy Policy", href: "/privacy-policy" },
-];
+import { FOOTER_LINKS, NAV_LINKS } from "@/lib/constants";
 
 function RootLayout() {
   const [sheetIsOpen, setSheetIsOpen] = useState(false);
@@ -52,8 +37,8 @@ function RootLayout() {
   return (
     <div>
       <ScrollToTop />
-      <div className="px-5">
-        <header className="mx-auto mt-8 mb-10 flex w-full max-w-[1200px] items-center justify-between rounded-[360px] bg-[#F0F4FD] px-6 py-4 md:mb-[104px] lg:px-20 lg:py-6">
+      <div className="fixed right-0 left-0 z-50 bg-white px-5 pt-2">
+        <header className="mx-auto flex w-full max-w-[1200px] items-center justify-between rounded-[360px] bg-[#F0F4FD] px-6 py-4 lg:py-6">
           <Link
             href="/"
             onClick={(e) => {
@@ -157,7 +142,7 @@ function RootLayout() {
       </main>
 
       <div className="bg-[#F0F4FD]">
-        <footer className="mx-auto w-full max-w-[1200px] space-y-16 px-5 pt-16 pb-20 md:px-10">
+        <footer className="mx-auto w-full max-w-[1200px] space-y-16 px-5 pt-16 pb-5 md:px-10">
           <div className="flex flex-col justify-between gap-12 lg:flex-row lg:items-center">
             <div className="flex flex-1 flex-col gap-8">
               <div className="w-full max-w-[483px] space-y-4">

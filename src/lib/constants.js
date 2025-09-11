@@ -136,3 +136,19 @@ export const TESTIMONIALS = [
     designation: "Backend Developer",
   },
 ];
+
+export const NAV_LINKS = [
+  { title: "Communities", href: "/communities" },
+  { title: "Tasks", href: "/tasks" },
+  { title: "Testimonials", href: "/#testimonials" },
+  { title: "Learn More", href: "/learn-more" },
+];
+
+export const FOOTER_LINKS = [
+  { title: "Communities", href: "/communities" },
+  { title: "Testimonials", href: "/#testimonials" },
+  { title: "Tasks", href: "/tasks" },
+  { title: "Terms of Use", href: "/terms-of-use" },
+  { title: "Learn More", href: "/learn-more" },
+  { title: "Privacy Policy", href: "/privacy-policy" },
+];
