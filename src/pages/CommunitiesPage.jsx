@@ -5,7 +5,7 @@ import { Search } from "lucide-react";
 import React, { useState } from "react";
 import { useNavigate } from "react-router";
 
-const COMMUNITIES_PER_PAGE = 9;
+const COMMUNITIES_PER_PAGE = 15;
 
 const COMMUNITIES = [
   {

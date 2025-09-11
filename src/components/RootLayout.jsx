@@ -1,12 +1,6 @@
 import DesktopAuthButtons from "@/components/DesktopAuthButtons";
 import MobileAuthButtons from "@/components/MobileAuthButtons";
 import {
-  NavigationMenu,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-} from "@/components/ui/navigation-menu";
-import {
   Sheet,
   SheetClose,
   SheetContent,
@@ -17,8 +11,9 @@ import {
 } from "@/components/ui/sheet";
 import { Menu } from "lucide-react";
 import { Fragment, useEffect, useState } from "react";
-import { Link, Outlet, useNavigate } from "react-router";
+import { Link, NavLink, Outlet, useNavigate } from "react-router";
 import { Button } from "./ui/button";
+import ScrollToTop from "./ScrollToTop";
 
 const NAV_LINKS = [
   { title: "Communities", href: "/communities" },
@@ -56,6 +51,7 @@ function RootLayout() {
 
   return (
     <div>
+      <ScrollToTop />
       <div className="px-5">
         <header className="mx-auto mt-8 mb-10 flex w-full max-w-[1200px] items-center justify-between rounded-[360px] bg-[#F0F4FD] px-6 py-4 md:mb-[104px] lg:px-20 lg:py-6">
           <Link
@@ -71,31 +67,33 @@ function RootLayout() {
           </Link>
 
           {/* DESKTOP NAV */}
-          <NavigationMenu className="hidden md:block">
-            <NavigationMenuList className="flex gap-3 lg:gap-10">
+          <nav className="hidden md:block">
+            <ul className="flex gap-5 lg:gap-10">
               {NAV_LINKS.map((link) => (
-                <NavigationMenuItem key={link.title}>
-                  <NavigationMenuLink asChild>
-                    {link.title === "Testimonials" ? (
-                      <a
-                        className="text-[#0D0516] hover:underline"
-                        href={link.href}
-                      >
-                        {link.title}
-                      </a>
-                    ) : (
-                      <Link
-                        className="text-[#0D0516] hover:underline"
-                        to={link.href}
-                      >
-                        {link.title}
-                      </Link>
-                    )}
-                  </NavigationMenuLink>
-                </NavigationMenuItem>
+                <li key={link.title}>
+                  {link.title === "Testimonials" ? (
+                    <a
+                      className="text-[#0D0516] hover:underline"
+                      href={link.href}
+                    >
+                      {link.title}
+                    </a>
+                  ) : (
+                    <NavLink
+                      className={({ isActive }) =>
+                        isActive
+                          ? "font-extrabold text-[#2F0FD1] hover:underline"
+                          : "text-[#0D0516] hover:underline"
+                      }
+                      to={link.href}
+                    >
+                      {link.title}
+                    </NavLink>
+                  )}
+                </li>
               ))}
-            </NavigationMenuList>
-          </NavigationMenu>
+            </ul>
+          </nav>
 
           <DesktopAuthButtons />
 
@@ -115,33 +113,37 @@ function RootLayout() {
                 <SheetDescription>Mobile navigation</SheetDescription>
               </SheetHeader>
               <div className="flex min-h-1/2 flex-col items-center justify-center gap-14 px-4 pt-24">
-                <NavigationMenu>
-                  <NavigationMenuList className="flex flex-col gap-6">
+                <nav>
+                  <ul className="flex flex-col items-center gap-6">
                     {NAV_LINKS.map((link) => (
-                      <NavigationMenuItem key={link.title}>
-                        <NavigationMenuLink asChild>
-                          <SheetClose asChild>
-                            {link.title === "Testimonials" ? (
-                              <a
-                                className="text-[#0D0516] hover:underline"
-                                href={link.href}
-                              >
-                                {link.title}
-                              </a>
-                            ) : (
-                              <Link
-                                className="text-[#0D0516] hover:underline"
-                                to={link.href}
-                              >
-                                {link.title}
-                              </Link>
-                            )}
-                          </SheetClose>
-                        </NavigationMenuLink>
-                      </NavigationMenuItem>
+                      <li key={link.title}>
+                        {/* <SheetClose asChild> */}
+                        {link.title === "Testimonials" ? (
+                          <a
+                            className="text-[#0D0516] hover:underline"
+                            href={link.href}
+                            onClick={() => setSheetIsOpen(false)}
+                          >
+                            {link.title}
+                          </a>
+                        ) : (
+                          <NavLink
+                            className={({ isActive }) =>
+                              isActive
+                                ? "font-extrabold text-[#2F0FD1] hover:underline"
+                                : "text-[#0D0516] hover:underline"
+                            }
+                            to={link.href}
+                            onClick={() => setSheetIsOpen(false)}
+                          >
+                            {link.title}
+                          </NavLink>
+                        )}
+                        {/* </SheetClose> */}
+                      </li>
                     ))}
-                  </NavigationMenuList>
-                </NavigationMenu>
+                  </ul>
+                </nav>
 
                 <MobileAuthButtons />
               </div>
