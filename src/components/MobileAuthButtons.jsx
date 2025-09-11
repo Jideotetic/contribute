@@ -1,18 +1,12 @@
 import React from "react";
-import { Button } from "./ui/button";
+import GetStartedButton from "./GetStartedButton";
+import LoginButton from "./LoginButton";
 
 function MobileAuthButtons() {
   return (
-    <div className="flex w-full flex-col gap-4 md:hidden">
-      <Button className="w-full cursor-pointer rounded-md bg-[#2F0FD1] px-8 py-5 hover:bg-[#2F0FD1]/70">
-        Get Started
-      </Button>
-      <Button
-        variant="outline"
-        className="w-full cursor-pointer rounded-md bg-[#EDF2FF] px-8 py-5 text-[#2F0FD1] hover:text-[#2F0FD1]"
-      >
-        Log In
-      </Button>
+    <div className="flex w-full flex-col gap-2 md:hidden">
+      <GetStartedButton />
+      <LoginButton />
     </div>
   );
 }

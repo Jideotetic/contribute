@@ -58,7 +58,7 @@ function RootLayout() {
                 <li key={link.title}>
                   {link.title === "Testimonials" ? (
                     <a
-                      className="text-[#0D0516] hover:underline"
+                      className="text-[#0D0516] hover:text-[#2F0FD1] hover:underline"
                       href={link.href}
                     >
                       {link.title}
@@ -68,7 +68,7 @@ function RootLayout() {
                       className={({ isActive }) =>
                         isActive
                           ? "font-extrabold text-[#2F0FD1] hover:underline"
-                          : "text-[#0D0516] hover:underline"
+                          : "text-[#0D0516] hover:text-[#2F0FD1] hover:underline"
                       }
                       to={link.href}
                     >
@@ -105,7 +105,7 @@ function RootLayout() {
                         {/* <SheetClose asChild> */}
                         {link.title === "Testimonials" ? (
                           <a
-                            className="text-[#0D0516] hover:underline"
+                            className="text-[#0D0516] hover:text-[#2F0FD1] hover:underline"
                             href={link.href}
                             onClick={() => setSheetIsOpen(false)}
                           >
@@ -116,7 +116,7 @@ function RootLayout() {
                             className={({ isActive }) =>
                               isActive
                                 ? "font-extrabold text-[#2F0FD1] hover:underline"
-                                : "text-[#0D0516] hover:underline"
+                                : "text-[#0D0516] hover:text-[#2F0FD1] hover:underline"
                             }
                             to={link.href}
                             onClick={() => setSheetIsOpen(false)}
@@ -153,13 +153,10 @@ function RootLayout() {
               </div>
 
               <div className="flex flex-col justify-center gap-4 sm:flex-row sm:justify-start">
-                <Button className="w-full cursor-pointer rounded-md bg-[#2F0FD1] px-8 py-5 hover:bg-[#2F0FD1]/70 sm:w-fit">
+                <Button variant="secondary" size="lg">
                   Explore Communities
                 </Button>
-                <Button
-                  variant="outline"
-                  className="w-full cursor-pointer rounded-md bg-white px-8 py-5 text-[#2F0FD1] hover:text-[#2F0FD1] sm:w-fit"
-                >
+                <Button variant="outline" size="lg" className="bg-white">
                   View Tasks
                 </Button>
               </div>
