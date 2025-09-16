@@ -1,7 +1,3 @@
 export default function DashboardContainer({ children }) {
-  return (
-    <div className="border-2 border-red-500 px-4 pt-[80px] md:ml-[283px]">
-      {children}
-    </div>
-  );
+  return <div className="px-4 pt-[90px] pb-8 md:ml-[283px]">{children}</div>;
 }

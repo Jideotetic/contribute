@@ -1,4 +1,7 @@
-import { OVERVIEW } from "@/lib/constants";
+import CommunitiesCard from "@/components/CommunitiesCard";
+import TasksCard from "@/components/TasksCard";
+import { Button } from "@/components/ui/button";
+import { COMMUNITIES, OVERVIEW, TASKS } from "@/lib/constants";
 import { capitalizeFirstLetter } from "@/lib/utils";
 import React from "react";
 import { useLocation } from "react-router";
@@ -9,7 +12,7 @@ function Overview() {
   return (
     <div className="space-y-8">
       <div className="space-y-3">
-        <h1 className="mb text-[20px] font-bold text-[#050215] md:hidden">
+        <h1 className="text-[20px] font-bold text-[#050215] md:hidden">
           {capitalizeFirstLetter(currentPath)}
         </h1>
 
@@ -35,25 +38,63 @@ function Overview() {
                 </span>
                 <span className="font-medium text-[#7A899B]">{item.title}</span>
               </div>
-
-              {/* <p className="font-normal text-[#636366]">
-                {testimonial.message}
-              </p>
-
-              <div className="space-y-2">
-                <p className="text-[20px] font-semibold text-[#050215]">
-                  {testimonial.name}
-                </p>
-                <p className="text-[18px] font-medium text-[#2F0FD1]">
-                  {testimonial.designation}
-                </p>
-              </div> */}
             </div>
           ))}
         </div>
       </div>
 
-      <div></div>
+      <div className="space-y-5">
+        <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+          <div className="space-y-2">
+            <h2 className="text-[20px] font-bold text-[#050215]">Open Tasks</h2>
+            <p className="font-medium text-[#777F90]">
+              Explore available tasks
+            </p>
+          </div>
+
+          <Button className="w-full cursor-pointer rounded-md bg-[#2F0FD1] px-8 py-5 hover:bg-[#2F0FD1]/70 sm:w-auto">
+            View All
+          </Button>
+        </div>
+
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {TASKS.map((task, i) => (
+            <TasksCard task={task} key={i} />
+          ))}
+        </div>
+      </div>
+
+      <div className="space-y-5">
+        <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+          <div className="space-y-2">
+            <h2 className="text-[20px] font-bold text-[#050215]">
+              Communities
+            </h2>
+            <p className="font-medium text-[#777F90]">
+              Discover and Join communities building impactful projects
+            </p>
+          </div>
+
+          <div className="flex gap-4">
+            <Button
+              variant="outline"
+              className="flex-1 cursor-pointer rounded-md bg-white px-8 py-5 text-[#2F0FD1] hover:text-[#2F0FD1]"
+            >
+              View All
+            </Button>
+
+            <Button className="w-1/2 cursor-pointer rounded-md bg-[#2F0FD1] px-8 py-5 hover:bg-[#2F0FD1]/70 sm:flex-1">
+              Create Community
+            </Button>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {COMMUNITIES.map((community, i) => (
+            <CommunitiesCard community={community} key={i} />
+          ))}
+        </div>
+      </div>
     </div>
   );
 }
