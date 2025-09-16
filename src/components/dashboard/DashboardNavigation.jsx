@@ -45,9 +45,14 @@ const NAV_LINKS = [
   },
 ];
 
-function DashboardNavigation({ setSheetIsOpen }) {
+function DashboardNavigation({
+  setSheetIsOpen,
+  platform = "mobile" | "desktop",
+}) {
   return (
-    <div className="h-full space-y-4 px-4 pt-8">
+    <div
+      className={`h-full space-y-4 px-4 ${platform === "mobile" ? "pt-8" : "pt-4"}`}
+    >
       {NAV_LINKS.map((section, index) => (
         <div key={index} className="space-y-3">
           <div className="pl-6 text-[14px] font-medium text-[#525866]">

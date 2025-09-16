@@ -40,7 +40,10 @@ function MobileNavigation({
       <SheetContent side={side} className="bg-white">
         <SheetHeader className="relative">
           <SheetTitle className="absolute top-5 left-4 text-[28px] font-extrabold text-[#2F0FD1]">
-            <Link onClick={() => setSheetIsOpen(false)} href="/">
+            <Link
+              onClick={() => setSheetIsOpen(false)}
+              to="/dashboard/overview"
+            >
               CF
             </Link>
           </SheetTitle>
