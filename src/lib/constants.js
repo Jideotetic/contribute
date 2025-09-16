@@ -9,6 +9,9 @@ import { IoIosHelpCircle } from "react-icons/io";
 import { MdLibraryAddCheck } from "react-icons/md";
 import { GiFallingStar, GiTwoCoins } from "react-icons/gi";
 import { GiIceCube } from "react-icons/gi";
+import { BsBoundingBox } from "react-icons/bs";
+import { FaUserCheck } from "react-icons/fa";
+import { HiUserGroup } from "react-icons/hi";
 
 export const METRICS = [
   { title: "communities", value: "1,200" },
@@ -222,5 +225,28 @@ export const OVERVIEW = [
     title: "reputation score",
     value: 5,
     icon: GiFallingStar,
+  },
+];
+
+export const COMMUNITIES_OVERVIEW = [
+  {
+    title: "total communities",
+    value: 82,
+    icon: BsBoundingBox,
+  },
+  {
+    title: "communities joined",
+    value: 34,
+    icon: FaUserCheck,
+  },
+  {
+    title: "total members",
+    value: 433,
+    icon: HiUserGroup,
+  },
+  {
+    title: "overall spent",
+    value: 5,
+    icon: GiTwoCoins,
   },
 ];
