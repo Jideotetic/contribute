@@ -51,9 +51,9 @@ function DashboardLayout() {
       </DashboardSidebarContainer>
 
       <DashboardDesktopHeader>
-        <p className="text-2xl font-bold text-[#050215]">
+        <h1 className="text-2xl font-bold text-[#050215]">
           {capitalizeFirstLetter(currentPath)}
-        </p>
+        </h1>
         <img src="/Frame 43596.svg" alt="" />
       </DashboardDesktopHeader>
       <DashboardContainer>

@@ -1,3 +1,15 @@
+import { IoGrid } from "react-icons/io5";
+import { HiSquare3Stack3D } from "react-icons/hi2";
+import { FaNewspaper } from "react-icons/fa";
+import { BsBarChartLineFill } from "react-icons/bs";
+import { FaCreditCard } from "react-icons/fa6";
+import { FaUser } from "react-icons/fa6";
+import { FaBell } from "react-icons/fa";
+import { IoIosHelpCircle } from "react-icons/io";
+import { MdLibraryAddCheck } from "react-icons/md";
+import { GiFallingStar, GiTwoCoins } from "react-icons/gi";
+import { GiIceCube } from "react-icons/gi";
+
 export const METRICS = [
   { title: "communities", value: "1,200" },
   { title: "quests completed", value: "4,000" },
@@ -151,4 +163,64 @@ export const FOOTER_LINKS = [
   { title: "Terms of Use", href: "/terms-of-use" },
   { title: "Learn More", href: "/learn-more" },
   { title: "Privacy Policy", href: "/privacy-policy" },
+];
+
+export const DASHBOARD_NAV_LINKS = [
+  {
+    heading: "MAIN MENU",
+    links: [
+      { title: "Overview", href: "/dashboard/overview", icon: IoGrid },
+      {
+        title: "Communities",
+        href: "/dashboard/communities",
+        icon: HiSquare3Stack3D,
+      },
+      { title: "Tasks", href: "/dashboard/tasks", icon: FaNewspaper },
+      { title: "Earnings", href: "/dashboard/earnings", icon: FaCreditCard },
+      {
+        title: "Analytics",
+        href: "/dashboard/analytics",
+        icon: BsBarChartLineFill,
+      },
+    ],
+  },
+  {
+    heading: "PERSONAL",
+    links: [
+      { title: "Profile", href: "/dashboard/profile", icon: FaUser },
+      {
+        title: "Notifications",
+        href: "/dashboard/notifications",
+        icon: FaBell,
+      },
+      {
+        title: "Help & Support",
+        href: "/dashboard/help",
+        icon: IoIosHelpCircle,
+      },
+    ],
+  },
+];
+
+export const OVERVIEW = [
+  {
+    title: "task in progress",
+    value: 23,
+    icon: MdLibraryAddCheck,
+  },
+  {
+    title: "amount earned",
+    value: 1500,
+    icon: GiTwoCoins,
+  },
+  {
+    title: "communities",
+    value: 8,
+    icon: GiIceCube,
+  },
+  {
+    title: "reputation score",
+    value: 5,
+    icon: GiFallingStar,
+  },
 ];
