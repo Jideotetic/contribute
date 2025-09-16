@@ -8,6 +8,7 @@ import HomePage from "./pages/HomePage";
 import RootLayout from "./components/RootLayout";
 import TaskPage from "./pages/TaskPage";
 import CommunitiesPage from "./pages/CommunitiesPage";
+import DashboardLayout from "./components/dashboard/DashboardLayout";
 
 const router = createBrowserRouter([
   {
@@ -18,6 +19,21 @@ const router = createBrowserRouter([
       { path: "learn-more", element: <></> },
       { path: "tasks", Component: TaskPage },
       { path: "communities", Component: CommunitiesPage },
+    ],
+  },
+  {
+    path: "/dashboard",
+    Component: DashboardLayout,
+    children: [
+      // { index: true, Component: HomePage },
+      { path: "overview", element: <></> },
+      { path: "communities", element: <></> },
+      { path: "tasks", element: <></> },
+      { path: "earnings", element: <></> },
+      { path: "analytics", element: <></> },
+      { path: "profile", element: <></> },
+      { path: "notifications", element: <></> },
+      { path: "help", element: <></> },
     ],
   },
 ]);

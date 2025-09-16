@@ -1,36 +1,14 @@
 import DesktopAuthButtons from "@/components/DesktopAuthButtons";
 import MobileAuthButtons from "@/components/MobileAuthButtons";
-import {
-  Sheet,
-  SheetClose,
-  SheetContent,
-  SheetDescription,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "@/components/ui/sheet";
-import { Menu } from "lucide-react";
-import { Fragment, useEffect, useState } from "react";
+import { Fragment, useState } from "react";
 import { Link, NavLink, Outlet, useNavigate } from "react-router";
 import { Button } from "./ui/button";
 import ScrollToTop from "./ScrollToTop";
 import { FOOTER_LINKS, NAV_LINKS } from "@/lib/constants";
+import MobileNavigation from "./MobileNavigation";
 
 function RootLayout() {
   const [sheetIsOpen, setSheetIsOpen] = useState(false);
-
-  useEffect(() => {
-    const mediaQuery = window.matchMedia("(min-width: 768px)");
-    const handler = () => {
-      if (mediaQuery.matches) {
-        setSheetIsOpen(false);
-      }
-    };
-
-    handler();
-    mediaQuery.addEventListener("change", handler);
-    return () => mediaQuery.removeEventListener("change", handler);
-  }, []);
 
   const navigate = useNavigate();
 
@@ -83,7 +61,7 @@ function RootLayout() {
           <DesktopAuthButtons />
 
           {/* MOBILE NAV */}
-          <Sheet open={sheetIsOpen} onOpenChange={setSheetIsOpen}>
+          {/* <Sheet open={sheetIsOpen} onOpenChange={setSheetIsOpen}>
             <SheetTrigger asChild>
               <button className="cursor-pointer rounded-[4px] bg-[#2F0FD1] p-0.5 opacity-100 ring-offset-background transition-opacity hover:opacity-70 focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:outline-hidden disabled:pointer-events-none data-[state=open]:bg-secondary md:hidden">
                 <Menu className="size-8 text-white" />
@@ -102,7 +80,7 @@ function RootLayout() {
                   <ul className="flex flex-col items-center gap-6">
                     {NAV_LINKS.map((link) => (
                       <li key={link.title}>
-                        {/* <SheetClose asChild> */}
+                     
                         {link.title === "Testimonials" ? (
                           <a
                             className="text-[#0D0516] hover:text-[#2F0FD1] hover:underline"
@@ -124,7 +102,7 @@ function RootLayout() {
                             {link.title}
                           </NavLink>
                         )}
-                        {/* </SheetClose> */}
+                     
                       </li>
                     ))}
                   </ul>
@@ -133,7 +111,47 @@ function RootLayout() {
                 <MobileAuthButtons />
               </div>
             </SheetContent>
-          </Sheet>
+          </Sheet> */}
+
+          <MobileNavigation
+            side="right"
+            sheetIsOpen={sheetIsOpen}
+            setSheetIsOpen={setSheetIsOpen}
+          >
+            <div className="flex min-h-1/2 flex-col items-center justify-center gap-14 px-4 pt-24">
+              <nav>
+                <ul className="flex flex-col items-center gap-6">
+                  {NAV_LINKS.map((link) => (
+                    <li key={link.title}>
+                      {link.title === "Testimonials" ? (
+                        <a
+                          className="text-[#0D0516] hover:text-[#2F0FD1] hover:underline"
+                          href={link.href}
+                          onClick={() => setSheetIsOpen(false)}
+                        >
+                          {link.title}
+                        </a>
+                      ) : (
+                        <NavLink
+                          className={({ isActive }) =>
+                            isActive
+                              ? "font-extrabold text-[#2F0FD1] hover:underline"
+                              : "text-[#0D0516] hover:text-[#2F0FD1] hover:underline"
+                          }
+                          to={link.href}
+                          onClick={() => setSheetIsOpen(false)}
+                        >
+                          {link.title}
+                        </NavLink>
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              </nav>
+
+              <MobileAuthButtons />
+            </div>
+          </MobileNavigation>
         </header>
       </div>
 

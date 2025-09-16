@@ -1,0 +1,270 @@
+import DashboardLayoutContainer from "./DashboardLayoutContainer";
+import DashboardMobileHeader from "./DashboardMobileHeader";
+import MobileNavigation from "../MobileNavigation";
+import DashboardNavigation from "./DashboardNavigation";
+import { useState } from "react";
+
+function DashboardLayout() {
+  const [sheetIsOpen, setSheetIsOpen] = useState(false);
+
+  // const navigate = useNavigate();
+
+  // return (
+  //   <div>
+  //     {/* <ScrollToTop /> */}
+  //     <div className="fixed right-0 left-0 z-50 bg-white px-5 pt-2">
+  //       <header className="mx-auto flex w-full max-w-[1200px] items-center justify-between rounded-[360px] bg-[#F0F4FD] px-6 py-4 lg:py-6">
+  //         <Link
+  //           href="/"
+  //           onClick={(e) => {
+  //             e.preventDefault();
+
+  //             navigate("/");
+  //           }}
+  //           className="text-[32px] font-bold text-[#2F0FD1]"
+  //         >
+  //           CF
+  //         </Link>
+
+  //         {/* DESKTOP NAV */}
+  //         <nav className="hidden md:block">
+  //           <ul className="flex gap-5 lg:gap-10">
+  //             {NAV_LINKS.map((link) => (
+  //               <li key={link.title}>
+  //                 {link.title === "Testimonials" ? (
+  //                   <a
+  //                     className="text-[#0D0516] hover:text-[#2F0FD1] hover:underline"
+  //                     href={link.href}
+  //                   >
+  //                     {link.title}
+  //                   </a>
+  //                 ) : (
+  //                   <NavLink
+  //                     className={({ isActive }) =>
+  //                       isActive
+  //                         ? "font-extrabold text-[#2F0FD1] hover:underline"
+  //                         : "text-[#0D0516] hover:text-[#2F0FD1] hover:underline"
+  //                     }
+  //                     to={link.href}
+  //                   >
+  //                     {link.title}
+  //                   </NavLink>
+  //                 )}
+  //               </li>
+  //             ))}
+  //           </ul>
+  //         </nav>
+
+  //         <DesktopAuthButtons />
+
+  //         {/* MOBILE NAV */}
+  //         <Sheet open={sheetIsOpen} onOpenChange={setSheetIsOpen}>
+  //           <SheetTrigger asChild>
+  //             <button className="cursor-pointer rounded-[4px] bg-[#2F0FD1] p-0.5 opacity-100 ring-offset-background transition-opacity hover:opacity-70 focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:outline-hidden disabled:pointer-events-none data-[state=open]:bg-secondary md:hidden">
+  //               <Menu className="size-8 text-white" />
+  //               <span className="sr-only">Open mobile navigation</span>
+  //             </button>
+  //           </SheetTrigger>
+  //           <SheetContent className="bg-white">
+  //             <SheetHeader className="sr-only">
+  //               <SheetTitle>
+  //                 <Link href="/">CF</Link>
+  //               </SheetTitle>
+  //               <SheetDescription>Mobile navigation</SheetDescription>
+  //             </SheetHeader>
+  //             <div className="flex min-h-1/2 flex-col items-center justify-center gap-14 px-4 pt-24">
+  //               <nav>
+  //                 <ul className="flex flex-col items-center gap-6">
+  //                   {NAV_LINKS.map((link) => (
+  //                     <li key={link.title}>
+  //                       {/* <SheetClose asChild> */}
+  //                       {link.title === "Testimonials" ? (
+  //                         <a
+  //                           className="text-[#0D0516] hover:text-[#2F0FD1] hover:underline"
+  //                           href={link.href}
+  //                           onClick={() => setSheetIsOpen(false)}
+  //                         >
+  //                           {link.title}
+  //                         </a>
+  //                       ) : (
+  //                         <NavLink
+  //                           className={({ isActive }) =>
+  //                             isActive
+  //                               ? "font-extrabold text-[#2F0FD1] hover:underline"
+  //                               : "text-[#0D0516] hover:text-[#2F0FD1] hover:underline"
+  //                           }
+  //                           to={link.href}
+  //                           onClick={() => setSheetIsOpen(false)}
+  //                         >
+  //                           {link.title}
+  //                         </NavLink>
+  //                       )}
+  //                       {/* </SheetClose> */}
+  //                     </li>
+  //                   ))}
+  //                 </ul>
+  //               </nav>
+
+  //               <MobileAuthButtons />
+  //             </div>
+  //           </SheetContent>
+  //         </Sheet>
+  //       </header>
+  //     </div>
+
+  //     <main>
+  //       <Outlet />
+  //     </main>
+
+  //     <div className="bg-[#F0F4FD]">
+  //       <footer className="mx-auto w-full max-w-[1200px] space-y-16 px-5 pt-16 pb-5 md:px-10">
+  //         <div className="flex flex-col justify-between gap-12 lg:flex-row lg:items-center">
+  //           <div className="flex flex-1 flex-col gap-8">
+  //             <div className="w-full max-w-[483px] space-y-4">
+  //               <p className="text-[40px] font-semibold text-[#2F0FD1]">CF</p>
+  //               <p className="text-[20px] font-light text-[#09032A]">
+  //                 Contribute.fi — Decentralized coordination for communities.
+  //               </p>
+  //             </div>
+
+  //             <div className="flex flex-col justify-center gap-4 sm:flex-row sm:justify-start">
+  //               <Button variant="secondary" size="lg">
+  //                 Explore Communities
+  //               </Button>
+  //               <Button variant="outline" size="lg" className="bg-white">
+  //                 View Tasks
+  //               </Button>
+  //             </div>
+  //           </div>
+
+  //           <div className="grid w-fit grid-cols-1 gap-5 lg:flex-1 lg:grid-cols-3">
+  //             {FOOTER_LINKS.map((link, i) => (
+  //               <Fragment key={i}>
+  //                 {link.title === "Testimonials" ? (
+  //                   <a
+  //                     className="font-normal text-[#1C1C1E] hover:underline"
+  //                     href={link.href}
+  //                   >
+  //                     {" "}
+  //                     {link.title}
+  //                   </a>
+  //                 ) : (
+  //                   <Link
+  //                     className="font-normal text-[#1C1C1E] hover:underline"
+  //                     to={link.href}
+  //                   >
+  //                     {link.title}
+  //                   </Link>
+  //                 )}
+  //               </Fragment>
+  //             ))}
+  //           </div>
+  //         </div>
+  //         <p className="text-center font-medium text-[#1C097D]">
+  //           © 2025 Contribute.fi. All rights reserved{" "}
+  //         </p>
+  //       </footer>
+  //     </div>
+  //   </div>
+  // );
+
+  return (
+    <DashboardLayoutContainer>
+      <DashboardMobileHeader>
+        <MobileNavigation
+          side="left"
+          sheetIsOpen={sheetIsOpen}
+          setSheetIsOpen={setSheetIsOpen}
+        >
+          <DashboardNavigation setSheetIsOpen={setSheetIsOpen} />
+        </MobileNavigation>
+
+        {/* <Sheet open={sheetIsOpen} onOpenChange={setSheetIsOpen}>
+          <SheetTrigger asChild>
+            <button className="cursor-pointer rounded-[4px] bg-[#2F0FD1] p-0.5 opacity-100 ring-offset-background transition-opacity hover:opacity-70 focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:outline-hidden disabled:pointer-events-none data-[state=open]:bg-secondary md:hidden">
+              <Menu className="size-8 text-white" />
+              <span className="sr-only">Open mobile navigation</span>
+            </button>
+          </SheetTrigger>
+          <SheetContent side="left" className="bg-white">
+            <SheetHeader className="sr-only">
+              <SheetTitle>
+                <Link href="/">CF</Link>
+              </SheetTitle>
+              <SheetDescription>Mobile navigation</SheetDescription>
+            </SheetHeader>
+            <div className="flex min-h-1/2 flex-col items-center justify-center gap-14 px-4 pt-24">
+              <nav>
+                <ul className="flex flex-col items-center gap-6">
+                  {NAV_LINKS.map((link) => (
+                    <li key={link.title}>
+                     
+                      {link.title === "Testimonials" ? (
+                        <a
+                          className="text-[#0D0516] hover:text-[#2F0FD1] hover:underline"
+                          href={link.href}
+                          onClick={() => setSheetIsOpen(false)}
+                        >
+                          {link.title}
+                        </a>
+                      ) : (
+                        <NavLink
+                          className={({ isActive }) =>
+                            isActive
+                              ? "font-extrabold text-[#2F0FD1] hover:underline"
+                              : "text-[#0D0516] hover:text-[#2F0FD1] hover:underline"
+                          }
+                          to={link.href}
+                          onClick={() => setSheetIsOpen(false)}
+                        >
+                          {link.title}
+                        </NavLink>
+                      )}
+                 
+                    </li>
+                  ))}
+                </ul>
+              </nav>
+
+              <MobileAuthButtons />
+            </div>
+          </SheetContent>
+        </Sheet> */}
+        {/* <CompanyLogo height="h-20" width="w-[100px]" /> */}
+
+        {/* <Popover className="group">
+          <PopoverButton className="cursor-pointer focus:outline-none">
+            <AiOutlineClose className="hidden text-3xl text-white group-data-[open]:block" />
+            <AiOutlineMenu className="text-3xl text-white group-data-[open]:hidden" />
+          </PopoverButton>
+          <PopoverBackdrop
+            transition
+            className="fixed inset-0 top-[70px] bg-black/15 transition duration-300 ease-out data-[closed]:opacity-0"
+          />
+          <PopoverPanel
+            transition
+            className="absolute top-[70px] left-0 h-[calc(100vh-70px)] w-4/5 bg-white p-4 pb-10 transition duration-300 ease-in-out data-[closed]:-translate-x-[100%] min-[425px]:w-1/2"
+          >
+            <MobileNav rolesType={rolesType} />
+            <div className="flex shrink-0 items-center justify-between gap-2">
+              <CurrentUser user={session?.name} rolesType={rolesType} />
+            </div>
+          </PopoverPanel>
+        </Popover> */}
+      </DashboardMobileHeader>
+
+      {/* <DashboardSidebarContainer>
+        <CompanyLogo height="h-20" width="w-[100px]" />
+        <DesktopNav rolesType={rolesType} />
+      </DashboardSidebarContainer> */}
+
+      {/* <DashboardDesktopHeader>
+        <CurrentUser user={session?.name} rolesType={rolesType} />
+      </DashboardDesktopHeader> */}
+
+      {/* <DashboardContainer>{children}</DashboardContainer> */}
+    </DashboardLayoutContainer>
+  );
+}
+
+export default DashboardLayout;
