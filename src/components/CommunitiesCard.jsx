@@ -1,5 +1,4 @@
 import { COMMUNITY_TAG_BG } from "@/lib/constants";
-import React from "react";
 import { useNavigate } from "react-router";
 
 function CommunitiesCard({ community }) {

@@ -714,7 +714,7 @@ function TaskPage() {
           </div>
 
           <div className="flex shrink-0 lg:order-3">
-            <Filter />
+            <Filter tag="landing" />
           </div>
 
           <div className="relative w-full rounded-md border border-[#D0D5DD] px-[30px] py-2 sm:order-2 lg:w-[350px]">

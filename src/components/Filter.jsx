@@ -1,5 +1,6 @@
 import * as React from "react";
 import { Check } from "lucide-react";
+import { LuSlidersVertical } from "react-icons/lu";
 
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -19,28 +20,16 @@ import {
 
 const frameworks = [
   {
-    value: "next.js",
-    label: "Next.js",
+    value: "DeFi",
+    label: "DeFi",
   },
   {
-    value: "sveltekit",
-    label: "SvelteKit",
-  },
-  {
-    value: "nuxt.js",
-    label: "Nuxt.js",
-  },
-  {
-    value: "remix",
-    label: "Remix",
-  },
-  {
-    value: "astro",
-    label: "Astro",
+    value: "Dex",
+    label: "Dex",
   },
 ];
 
-function Filter() {
+function Filter({ tag }) {
   const [open, setOpen] = React.useState(false);
   const [value, setValue] = React.useState("");
 
@@ -50,11 +39,15 @@ function Filter() {
         <Button
           role="combobox"
           aria-expanded={open}
-          className="bg-[#2F0FD1] py-5"
+          className={`group ${tag === "landing" ? "bg-[#2F0FD1] hover:bg-[#F7F9FD]" : "bg-[#F7F9FD] hover:bg-[#2F0FD1]"} py-5`}
         >
-          <img src="/Frame 119.svg" alt="" />
+          <LuSlidersVertical
+            className={`text-[24px] ${tag === "landing" ? "text-[#F7F9FD] group-hover:text-[#2F0FD1]" : "text-[#2F0FD1] group-hover:text-[#F7F9FD]"}`}
+          />
 
-          <span className="hidden text-white sm:block">
+          <span
+            className={`hidden sm:block ${tag === "landing" ? "text-[#F7F9FD] group-hover:text-[#2F0FD1]" : "text-[#2F0FD1] group-hover:text-[#F7F9FD]"}`}
+          >
             {value
               ? frameworks.find((framework) => framework.value === value)?.label
               : "Filter"}

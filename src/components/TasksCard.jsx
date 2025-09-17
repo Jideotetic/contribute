@@ -1,5 +1,4 @@
 import { TASK_TAG_BG } from "@/lib/constants";
-import React from "react";
 
 function TasksCard({ task }) {
   return (

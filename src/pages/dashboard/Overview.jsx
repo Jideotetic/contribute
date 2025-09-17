@@ -60,11 +60,12 @@ function Overview() {
         <OverviewHeading
           title="Communities"
           description="Discover and Join communities building impactful projects"
+          large={true}
         >
-          <div className="flex gap-4">
+          <div className="flex w-full gap-4">
             <Button
               variant="outline"
-              className="flex-1 cursor-pointer rounded-md bg-white px-8 py-5 text-[#2F0FD1] hover:text-[#2F0FD1]"
+              className="flex-1 cursor-pointer rounded-md bg-white px-8 py-5 text-[#2F0FD1] hover:text-white"
             >
               View All
             </Button>

@@ -1,4 +1,3 @@
-import React from "react";
 import GetStartedButton from "./GetStartedButton";
 import LoginButton from "./LoginButton";
 
