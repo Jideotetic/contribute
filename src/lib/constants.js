@@ -12,6 +12,8 @@ import { GiIceCube } from "react-icons/gi";
 import { BsBoundingBox } from "react-icons/bs";
 import { FaUserCheck } from "react-icons/fa";
 import { HiUserGroup } from "react-icons/hi";
+import { BsIntersect } from "react-icons/bs";
+import { LuListChecks } from "react-icons/lu";
 
 export const METRICS = [
   { title: "communities", value: "1,200" },
@@ -248,5 +250,28 @@ export const COMMUNITIES_OVERVIEW = [
     title: "overall spent",
     value: 5,
     icon: GiTwoCoins,
+  },
+];
+
+export const TASKS_OVERVIEW = [
+  {
+    title: "active tasks",
+    value: 32,
+    icon: BsIntersect,
+  },
+  {
+    title: "tasks claimed",
+    value: 14,
+    icon: LuListChecks,
+  },
+  {
+    title: "total contributors",
+    value: 124,
+    icon: HiUserGroup,
+  },
+  {
+    title: "overall tasks",
+    value: 432,
+    icon: BsBoundingBox,
   },
 ];

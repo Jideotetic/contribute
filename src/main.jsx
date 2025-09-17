@@ -11,6 +11,7 @@ import CommunitiesPage from "./pages/CommunitiesPage";
 import DashboardLayout from "./components/dashboard/DashboardLayout";
 import Overview from "./pages/dashboard/Overview";
 import Communities from "./pages/dashboard/Communities";
+import Tasks from "./pages/dashboard/Tasks";
 
 const router = createBrowserRouter([
   {
@@ -30,7 +31,7 @@ const router = createBrowserRouter([
       // { index: true, Component: HomePage },
       { path: "overview", Component: Overview },
       { path: "communities", Component: Communities },
-      { path: "tasks", element: <></> },
+      { path: "tasks", Component: Tasks },
       { path: "earnings", element: <></> },
       { path: "analytics", element: <></> },
       { path: "profile", element: <></> },

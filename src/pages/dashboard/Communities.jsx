@@ -19,6 +19,8 @@ import TasksCard from "@/components/TasksCard";
 
 const COMMUNITIES_PER_PAGE = 15;
 
+const TASKS_PER_PAGE = 15;
+
 const COMMUNITIES = [
   {
     name: "The Unifiers",
@@ -1491,12 +1493,12 @@ function Communities() {
   const [taskCurrentPage, setTaskCurrentPage] = useState(1);
 
   const totalTask = TASKS.length;
-  const taskTotalPages = Math.ceil(totalTask / COMMUNITIES_PER_PAGE);
+  const taskTotalPages = Math.ceil(totalTask / TASKS_PER_PAGE);
 
-  const taskStartIndex = (currentPage - 1) * COMMUNITIES_PER_PAGE;
+  const taskStartIndex = (taskCurrentPage - 1) * TASKS_PER_PAGE;
   const currentTask = TASKS.slice(
     taskStartIndex,
-    taskStartIndex + COMMUNITIES_PER_PAGE,
+    taskStartIndex + TASKS_PER_PAGE,
   );
 
   const queryParams = new URLSearchParams(location.search);
