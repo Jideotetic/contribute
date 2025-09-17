@@ -1,7 +1,15 @@
 import { COMMUNITY_TAG_BG } from "@/lib/constants";
 import React from "react";
+import { useNavigate } from "react-router";
 
 function CommunitiesCard({ community }) {
+  const navigate = useNavigate();
+
+  const handleJoin = () => {
+    const params = new URLSearchParams(window.location.search);
+    params.set("community", community.name); // You can also use community.id or slug
+    navigate(`?${params.toString()}`, { replace: false });
+  };
   return (
     <div
       className={`flex flex-col justify-center gap-8 rounded-[8px] border-2 border-[#F0F4FD] bg-white px-[24px] py-[28px]`}
@@ -50,7 +58,13 @@ function CommunitiesCard({ community }) {
           </div>
         </div>
 
-        <button className="font-medium text-[#2F0FD1]"> + Join</button>
+        <button
+          onClick={handleJoin}
+          className="cursor-pointer font-medium text-[#2F0FD1]"
+        >
+          {" "}
+          + Join
+        </button>
       </div>
     </div>
   );

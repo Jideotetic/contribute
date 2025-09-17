@@ -2,26 +2,22 @@ import CommunitiesCard from "@/components/CommunitiesCard";
 import TasksCard from "@/components/TasksCard";
 import { Button } from "@/components/ui/button";
 import { COMMUNITIES, OVERVIEW, TASKS } from "@/lib/constants";
-import { capitalizeFirstLetter } from "@/lib/utils";
-import React from "react";
-import { useLocation } from "react-router";
+import OverviewHeading from "./OverviewHeading";
+import MetricsContainer from "@/components/dashboard/MetricsContainer";
+import MetricCard from "@/components/dashboard/MetricCard";
+import Heading from "@/components/dashboard/Heading";
 
 function Overview() {
-  const location = useLocation();
-  const currentPath = location.pathname.split("/")[2];
   return (
     <div className="space-y-8">
       <div className="space-y-3">
-        <h1 className="text-[20px] font-bold text-[#050215] md:hidden">
-          {capitalizeFirstLetter(currentPath)}
-        </h1>
+        <div className="md:hidden">
+          <Heading />
+        </div>
 
-        <div className="scrollbar-hidden flex gap-4 overflow-x-scroll">
-          {OVERVIEW.map((item, i) => (
-            <div
-              key={i}
-              className="flex w-full min-w-[260px] items-center gap-4 rounded-[8px] bg-white px-4.5 py-4"
-            >
+        <MetricsContainer>
+          {OVERVIEW.map((item, index) => (
+            <MetricCard key={index}>
               <div className="rounded-full bg-[#F0F4FD] p-3">
                 {item.icon && (
                   <item.icon
@@ -38,26 +34,22 @@ function Overview() {
                 </span>
                 <span className="font-medium text-[#7A899B]">{item.title}</span>
               </div>
-            </div>
+            </MetricCard>
           ))}
-        </div>
+        </MetricsContainer>
       </div>
 
       <div className="space-y-5">
-        <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
-          <div className="space-y-2">
-            <h2 className="text-[20px] font-bold text-[#050215]">Open Tasks</h2>
-            <p className="font-medium text-[#777F90]">
-              Explore available tasks
-            </p>
-          </div>
-
+        <OverviewHeading
+          title="Open Tasks"
+          description="Explore available tasks"
+        >
           <Button className="w-full cursor-pointer rounded-md bg-[#2F0FD1] px-8 py-5 hover:bg-[#2F0FD1]/70 sm:w-auto">
             View All
           </Button>
-        </div>
+        </OverviewHeading>
 
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3">
           {TASKS.map((task, i) => (
             <TasksCard task={task} key={i} />
           ))}
@@ -65,16 +57,10 @@ function Overview() {
       </div>
 
       <div className="space-y-5">
-        <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
-          <div className="space-y-2">
-            <h2 className="text-[20px] font-bold text-[#050215]">
-              Communities
-            </h2>
-            <p className="font-medium text-[#777F90]">
-              Discover and Join communities building impactful projects
-            </p>
-          </div>
-
+        <OverviewHeading
+          title="Communities"
+          description="Discover and Join communities building impactful projects"
+        >
           <div className="flex gap-4">
             <Button
               variant="outline"
@@ -87,9 +73,9 @@ function Overview() {
               Create Community
             </Button>
           </div>
-        </div>
+        </OverviewHeading>
 
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3">
           {COMMUNITIES.map((community, i) => (
             <CommunitiesCard community={community} key={i} />
           ))}
