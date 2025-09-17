@@ -722,6 +722,14 @@ function Tasks() {
   const location = useLocation();
   const [taskCurrentPage, setTaskCurrentPage] = useState(1);
 
+  const [taskView, setTaskView] = useState("active-tasks");
+
+  const handleChangeTaskView = (view) => {
+    setTaskView(view);
+  };
+
+  console.log({ taskView });
+
   const totalTask = TASKS.length;
   const taskTotalPages = Math.ceil(totalTask / TASKS_PER_PAGE);
 
@@ -737,8 +745,8 @@ function Tasks() {
   console.log({ taskTitle });
 
   const handleSort = (sortOrder) => {
-    console.log("Sort by:", sortOrder); // "Newest" or "Oldest"
-    // trigger your sort logic here
+    console.log("Sort by:", sortOrder);
+    // trigger sort logic here
   };
 
   return (
@@ -892,22 +900,25 @@ function Tasks() {
 
               <div className="flex w-full flex-1 shrink-0 gap-4 rounded-[8px] bg-[#F7F9FD] p-2 xl:w-1/2">
                 <Button
+                  onClick={() => handleChangeTaskView("active-tasks")}
                   variant="outline"
-                  className="flex-1 cursor-pointer rounded-[2px] border-none bg-white p-2 text-[15px] text-[#2F0FD1]"
+                  className={`flex-1 cursor-pointer rounded-[2px] border-none ${taskView === "active-tasks" ? "bg-white text-[#2F0FD1]" : "bg-[#F7F9FD] text-[#525866]"} p-2 text-[15px] hover:bg-white hover:text-[#2F0FD1]`}
                 >
                   Active Tasks
                 </Button>
 
                 <Button
+                  onClick={() => handleChangeTaskView("my-tasks")}
                   variant="outline"
-                  className="flex-1 cursor-pointer rounded-[2px] border-none bg-[#F7F9FD] p-2 text-[15px] text-[#525866]"
+                  className={`flex-1 cursor-pointer rounded-[2px] border-none ${taskView === "my-tasks" ? "bg-white text-[#2F0FD1]" : "bg-[#F7F9FD] text-[#525866]"} p-2 text-[15px] hover:bg-white hover:text-[#2F0FD1]`}
                 >
                   My Tasks
                 </Button>
 
                 <Button
+                  onClick={() => handleChangeTaskView("completed")}
                   variant="outline"
-                  className="flex-1 cursor-pointer rounded-[2px] border-none bg-[#F7F9FD] p-2 text-[15px] text-[#525866]"
+                  className={`flex-1 cursor-pointer rounded-[2px] border-none ${taskView === "completed" ? "bg-white text-[#2F0FD1]" : "bg-[#F7F9FD] text-[#525866]"} p-2 text-[15px] hover:bg-white hover:text-[#2F0FD1]`}
                 >
                   Completed
                 </Button>

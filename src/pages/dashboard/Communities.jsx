@@ -1481,6 +1481,20 @@ function Communities() {
 
   const [currentPage, setCurrentPage] = useState(1);
 
+  const [communityView, setCommunityView] = useState("all");
+
+  const handleChangeCommunityView = (view) => {
+    setCommunityView(view);
+  };
+
+  const [detailView, setDetailView] = useState("tasks");
+
+  const handleChangeDetailView = (view) => {
+    setDetailView(view);
+  };
+
+  console.log({ communityView, detailView });
+
   const totalCommunities = COMMUNITIES.length;
   const totalPages = Math.ceil(totalCommunities / COMMUNITIES_PER_PAGE);
 
@@ -1507,8 +1521,8 @@ function Communities() {
   console.log({ communityName });
 
   const handleSort = (sortOrder) => {
-    console.log("Sort by:", sortOrder); // "Newest" or "Oldest"
-    // trigger your sort logic here
+    console.log("Sort by:", sortOrder);
+    // trigger sort logic here
   };
 
   return (
@@ -1603,22 +1617,25 @@ function Communities() {
 
               <div className="flex w-full flex-1 shrink-0 gap-4 rounded-[8px] bg-[#F7F9FD] p-2 xl:w-1/2">
                 <Button
+                  onClick={() => handleChangeDetailView("tasks")}
                   variant="outline"
-                  className="flex-1 cursor-pointer rounded-[2px] border-none bg-white p-2 text-[15px] text-[#2F0FD1]"
+                  className={`flex-1 cursor-pointer rounded-[2px] border-none ${detailView === "tasks" ? "bg-white text-[#2F0FD1]" : "bg-[#F7F9FD] text-[#525866]"} p-2 text-[15px] hover:bg-white hover:text-[#2F0FD1]`}
                 >
                   Tasks
                 </Button>
 
                 <Button
+                  onClick={() => handleChangeDetailView("forum")}
                   variant="outline"
-                  className="flex-1 cursor-pointer rounded-[2px] border-none bg-[#F7F9FD] p-2 text-[15px] text-[#525866]"
+                  className={`flex-1 cursor-pointer rounded-[2px] border-none ${detailView === "forum" ? "bg-white text-[#2F0FD1]" : "bg-[#F7F9FD] text-[#525866]"} p-2 text-[15px] hover:bg-white hover:text-[#2F0FD1]`}
                 >
                   Forum
                 </Button>
 
                 <Button
+                  onClick={() => handleChangeDetailView("leader-board")}
                   variant="outline"
-                  className="flex-1 cursor-pointer rounded-[2px] border-none bg-[#F7F9FD] p-2 text-[15px] text-[#525866]"
+                  className={`flex-1 cursor-pointer rounded-[2px] border-none ${detailView === "leader-board" ? "bg-white text-[#2F0FD1]" : "bg-[#F7F9FD] text-[#525866]"} p-2 text-[15px] hover:bg-white hover:text-[#2F0FD1]`}
                 >
                   Leader Board
                 </Button>
@@ -1686,22 +1703,25 @@ function Communities() {
             <div className="flex flex-wrap items-center justify-between gap-4">
               <div className="flex w-full gap-4 rounded-[8px] bg-[#F7F9FD] p-2 lg:w-1/2">
                 <Button
+                  onClick={() => handleChangeCommunityView("all")}
                   variant="outline"
-                  className="flex-1 cursor-pointer rounded-[2px] border-none bg-white p-2 text-[15px] text-[#2F0FD1]"
+                  className={`flex-1 cursor-pointer rounded-[2px] border-none ${communityView === "all" ? "bg-white text-[#2F0FD1]" : "bg-[#F7F9FD] text-[#525866]"} p-2 text-[15px] hover:bg-white hover:text-[#2F0FD1]`}
                 >
                   All
                 </Button>
 
                 <Button
+                  onClick={() => handleChangeCommunityView("joined")}
                   variant="outline"
-                  className="flex-1 cursor-pointer rounded-[2px] border-none bg-[#F7F9FD] p-2 text-[15px] text-[#525866]"
+                  className={`flex-1 cursor-pointer rounded-[2px] border-none ${communityView === "joined" ? "bg-white text-[#2F0FD1]" : "bg-[#F7F9FD] text-[#525866]"} p-2 text-[15px] hover:bg-white hover:text-[#2F0FD1]`}
                 >
                   Joined
                 </Button>
 
                 <Button
+                  onClick={() => handleChangeCommunityView("created")}
                   variant="outline"
-                  className="flex-1 cursor-pointer rounded-[2px] border-none bg-[#F7F9FD] p-2 text-[15px] text-[#525866]"
+                  className={`flex-1 cursor-pointer rounded-[2px] border-none ${communityView === "created" ? "bg-white text-[#2F0FD1]" : "bg-[#F7F9FD] text-[#525866]"} p-2 text-[15px] hover:bg-white hover:text-[#2F0FD1]`}
                 >
                   Created
                 </Button>
