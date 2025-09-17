@@ -1593,54 +1593,52 @@ function Communities() {
             </div>
           </div>
 
-          <div className="border-2 border-green-500">
-            <div className="space-y-4 rounded-[4px] bg-white p-4">
-              <div className="flex flex-wrap items-center justify-between gap-4">
-                <div className="w-full xl:order-2 xl:w-fit">
-                  <CustomSearch placeholder="Search task" />
-                </div>
-
-                <div className="flex w-full flex-1 shrink-0 gap-4 rounded-[8px] bg-[#F7F9FD] p-2 xl:w-1/2">
-                  <Button
-                    variant="outline"
-                    className="flex-1 cursor-pointer rounded-[2px] border-none bg-white p-2 text-[15px] text-[#2F0FD1]"
-                  >
-                    Tasks
-                  </Button>
-
-                  <Button
-                    variant="outline"
-                    className="flex-1 cursor-pointer rounded-[2px] border-none bg-[#F7F9FD] p-2 text-[15px] text-[#525866]"
-                  >
-                    Forum
-                  </Button>
-
-                  <Button
-                    variant="outline"
-                    className="flex-1 cursor-pointer rounded-[2px] border-none bg-[#F7F9FD] p-2 text-[15px] text-[#525866]"
-                  >
-                    Leader Board
-                  </Button>
-                </div>
-
-                <div className="flex gap-4 xl:order-3">
-                  <Filter />
-                  <Sort onToggle={handleSort} />
-                </div>
+          <div className="space-y-4 rounded-[4px] bg-white p-4">
+            <div className="flex flex-wrap items-center justify-between gap-4">
+              <div className="w-full xl:order-2 xl:w-fit">
+                <CustomSearch placeholder="Search task" />
               </div>
 
-              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3">
-                {currentTask.map((task, i) => (
-                  <TasksCard task={task} key={i} />
-                ))}
+              <div className="flex w-full flex-1 shrink-0 gap-4 rounded-[8px] bg-[#F7F9FD] p-2 xl:w-1/2">
+                <Button
+                  variant="outline"
+                  className="flex-1 cursor-pointer rounded-[2px] border-none bg-white p-2 text-[15px] text-[#2F0FD1]"
+                >
+                  Tasks
+                </Button>
+
+                <Button
+                  variant="outline"
+                  className="flex-1 cursor-pointer rounded-[2px] border-none bg-[#F7F9FD] p-2 text-[15px] text-[#525866]"
+                >
+                  Forum
+                </Button>
+
+                <Button
+                  variant="outline"
+                  className="flex-1 cursor-pointer rounded-[2px] border-none bg-[#F7F9FD] p-2 text-[15px] text-[#525866]"
+                >
+                  Leader Board
+                </Button>
               </div>
 
-              <CustomPagination
-                currentPage={taskCurrentPage}
-                totalPages={taskTotalPages}
-                onPageChange={(page) => setTaskCurrentPage(page)}
-              />
+              <div className="flex gap-4 xl:order-3">
+                <Filter />
+                <Sort onToggle={handleSort} />
+              </div>
             </div>
+
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3">
+              {currentTask.map((task, i) => (
+                <TasksCard task={task} key={i} />
+              ))}
+            </div>
+
+            <CustomPagination
+              currentPage={taskCurrentPage}
+              totalPages={taskTotalPages}
+              onPageChange={(page) => setTaskCurrentPage(page)}
+            />
           </div>
         </div>
       ) : (
