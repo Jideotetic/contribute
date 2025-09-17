@@ -1,9 +1,19 @@
 import { TASK_TAG_BG } from "@/lib/constants";
+import { useNavigate } from "react-router";
 
 function TasksCard({ task }) {
+  const navigate = useNavigate();
+
+  const handleOpen = () => {
+    const params = new URLSearchParams(window.location.search);
+    params.set("task", task.title);
+    navigate(`?${params.toString()}`, { replace: false });
+  };
+
   return (
     <div
-      className={`flex flex-col justify-center gap-8 rounded-[8px] border-2 border-[#F0F4FD] bg-white px-[24px] py-[28px]`}
+      onClick={handleOpen}
+      className={`flex cursor-pointer flex-col justify-center gap-8 rounded-[8px] border-2 border-[#F0F4FD] bg-white px-[24px] py-[28px]`}
     >
       <div className="space-y-4">
         <div className="flex flex-wrap gap-2">
@@ -30,6 +40,7 @@ function TasksCard({ task }) {
           </div>
         </div>
       </div>
+      
       <div className={`space-y-2`}>
         <p className="max-w-full truncate overflow-hidden font-semibold whitespace-nowrap text-[#1C1C1E]">
           {task.title}

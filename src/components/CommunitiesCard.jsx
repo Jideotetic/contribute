@@ -6,7 +6,7 @@ function CommunitiesCard({ community }) {
 
   const handleJoin = () => {
     const params = new URLSearchParams(window.location.search);
-    params.set("community", community.name); // You can also use community.id or slug
+    params.set("community", community.name);
     navigate(`?${params.toString()}`, { replace: false });
   };
   return (
@@ -20,7 +20,7 @@ function CommunitiesCard({ community }) {
             <div className="space-y-1">
               <p className="font-semibold text-[#050215]">{community.name}</p>
               <p className="flex gap-1 text-[14px] text-[#2F0FD1]">
-                <img src="UsersThree (1).svg" alt="" />{" "}
+                <img src="/UsersThree (1).svg" alt="" />{" "}
                 <span className="shrink-0">
                   {community.numberOfMembers} members
                 </span>

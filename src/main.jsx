@@ -12,6 +12,7 @@ import DashboardLayout from "./components/dashboard/DashboardLayout";
 import Overview from "./pages/dashboard/Overview";
 import Communities from "./pages/dashboard/Communities";
 import Tasks from "./pages/dashboard/Tasks";
+import NotFound from "./components/NotFound";
 
 const router = createBrowserRouter([
   {
@@ -22,6 +23,7 @@ const router = createBrowserRouter([
       { path: "learn-more", element: <></> },
       { path: "tasks", Component: TaskPage },
       { path: "communities", Component: CommunitiesPage },
+      { path: "*", Component: NotFound },
     ],
   },
   {
@@ -37,7 +39,12 @@ const router = createBrowserRouter([
       { path: "profile", element: <></> },
       { path: "notifications", element: <></> },
       { path: "help", element: <></> },
+      { path: "*", Component: NotFound },
     ],
+  },
+  {
+    path: "*",
+    Component: NotFound,
   },
 ]);
 
