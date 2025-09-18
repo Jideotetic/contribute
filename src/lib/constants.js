@@ -1625,3 +1625,12 @@ export const TASKS_OVERVIEW = [
     icon: BsBoundingBox,
   },
 ];
+
+export const COMMUNITIES_TAG = ["Dex", "DeFi", "Wallet"];
+
+export const COMMUNITIES_DETAILS = [
+  { title: "Members", value: 64 },
+  { title: "Contributors", value: 23 },
+  { title: "Total Tasks", value: 12 },
+  { title: "Total Spent", value: 2000 },
+];
