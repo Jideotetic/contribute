@@ -11,6 +11,7 @@ import { Button } from "../ui/button";
 import BackButton from "../BackButton";
 import CustomSearch from "../Search";
 import Heading from "./Heading";
+import CreateCommunityForm from "../CreateCommunityForm";
 
 function DashboardLayout() {
   const [sheetIsOpen, setSheetIsOpen] = useState(false);
@@ -66,12 +67,14 @@ function DashboardLayout() {
 
         <div className="flex items-center gap-4">
           {currentPath === "communities" && !communityName && (
-            <div className="hidden flex-col gap-3 lg:flex lg:flex-row">
-              <CustomSearch placeholder="Search community" />
+            <div className="hidden items-center gap-3 lg:flex lg:flex-row">
+              <div>
+                <CustomSearch placeholder="Search community" />
+              </div>
 
-              <Button className="cursor-pointer rounded-md bg-[#2F0FD1] px-8 py-5 hover:bg-[#2F0FD1]/70 sm:flex-1">
-                Create Community
-              </Button>
+              <div>
+                <CreateCommunityForm />
+              </div>
             </div>
           )}
 
