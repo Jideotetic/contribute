@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router";
-import { METRICS } from "@/lib/constants";
 import AuthButtons from "@/components/AuthButtons";
 
 import Hero from "@/components/Hero";

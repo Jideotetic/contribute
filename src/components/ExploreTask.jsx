@@ -20,7 +20,7 @@ function ExploreTask() {
         </div>
 
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:px-10">
-          {TASKS.map((task, i) => (
+          {TASKS.slice(0, 6).map((task, i) => (
             <TasksCard task={task} key={i} tag="home-page" />
           ))}
         </div>
