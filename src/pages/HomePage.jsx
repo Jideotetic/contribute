@@ -1,20 +1,15 @@
 import { Button } from "@/components/ui/button";
 import { useEffect } from "react";
-import { useLocation } from "react-router";
-import {
-  COMMUNITIES,
-  METRICS,
-  TASKS,
-  TASK_TAG_BG,
-  COMMUNITY_TAG_BG,
-  TESTIMONIALS,
-} from "@/lib/constants";
+import { useLocation, useNavigate } from "react-router";
+import { COMMUNITIES, METRICS, TASKS, TESTIMONIALS } from "@/lib/constants";
 import CommunitiesCard from "@/components/CommunitiesCard";
 import TasksCard from "@/components/TasksCard";
 import AuthButtons from "@/components/AuthButtons";
+import ExploreButtons from "@/components/ExploreButtons";
 
 function HomePage() {
   const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (location.hash) {
@@ -46,23 +41,10 @@ function HomePage() {
               </p>
             </div>
 
-            {/* Buttons */}
-
-            <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <Button className="w-full cursor-pointer rounded-md bg-[#2F0FD1] px-8 py-5 hover:bg-[#2F0FD1]/70 sm:w-fit">
-                Explore Communities
-              </Button>
-              <Button
-                variant="outline"
-                className="w-full cursor-pointer rounded-md bg-[#EDF2FF] px-8 py-5 text-[#2F0FD1] hover:text-[#2F0FD1] sm:w-fit"
-              >
-                View Tasks
-              </Button>
-            </div>
+            <ExploreButtons />
           </div>
 
           {/* Image */}
-
           <img className="h-auto w-full" src="/Frame.svg" alt="" />
         </div>
       </div>
@@ -148,7 +130,13 @@ function HomePage() {
           </div>
 
           <div className="flex justify-center">
-            <Button className="cursor-pointer rounded-md bg-[#2F0FD1] px-8 py-5 hover:bg-[#2F0FD1]/70">
+            <Button
+              onClick={() => {
+                navigate("/tasks");
+              }}
+              size="lg"
+              variant="secondary"
+            >
               See all Tasks
             </Button>
           </div>
@@ -204,7 +192,13 @@ function HomePage() {
           </div>
 
           <div className="flex justify-center">
-            <Button className="cursor-pointer rounded-md bg-[#2F0FD1] px-8 py-5 hover:bg-[#2F0FD1]/70">
+            <Button
+              onClick={() => {
+                navigate("/tasks");
+              }}
+              size="lg"
+              variant="secondary"
+            >
               Explore all Communities
             </Button>
           </div>
