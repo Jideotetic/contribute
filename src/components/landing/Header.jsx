@@ -48,6 +48,7 @@ function Header() {
         side="right"
         sheetIsOpen={sheetIsOpen}
         setSheetIsOpen={setSheetIsOpen}
+        tag="home-page"
       >
         <div className="flex min-h-1/2 flex-col items-center justify-center gap-14 px-4 pt-24">
           <nav>

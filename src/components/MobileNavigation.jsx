@@ -15,6 +15,7 @@ function MobileNavigation({
   sheetIsOpen,
   setSheetIsOpen,
   children,
+  tag,
 }) {
   useEffect(() => {
     const mediaQuery = window.matchMedia("(min-width: 768px)");
@@ -39,10 +40,34 @@ function MobileNavigation({
       </SheetTrigger>
       <SheetContent side={side} className="bg-white">
         <SheetHeader className="relative">
-          <SheetTitle className="absolute top-5 left-4 text-[28px] font-extrabold text-[#2F0FD1]">
-            <Link onClick={() => setSheetIsOpen(false)} to="/">
-              CF
-            </Link>
+          <SheetTitle className="absolute top-5 left-4 text-[32px] font-extrabold text-[#2F0FD1]">
+            {tag === "home-page" ? (
+              <Link
+                onClick={() => {
+                  setSheetIsOpen(false);
+                  window.scrollTo({
+                    top: 0,
+                    behavior: "smooth",
+                  });
+                }}
+                to="/"
+              >
+                CF
+              </Link>
+            ) : (
+              <Link
+                onClick={() => {
+                  setSheetIsOpen(false);
+                  window.scrollTo({
+                    top: 0,
+                    behavior: "smooth",
+                  });
+                }}
+                to="/dashboard/overview"
+              >
+                CF
+              </Link>
+            )}
           </SheetTitle>
           <SheetDescription className="sr-only">
             Mobile navigation
