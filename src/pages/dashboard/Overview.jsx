@@ -6,8 +6,11 @@ import OverviewHeading from "./OverviewHeading";
 import MetricsContainer from "@/components/dashboard/MetricsContainer";
 import MetricCard from "@/components/dashboard/MetricCard";
 import Heading from "@/components/dashboard/Heading";
+import { useNavigate } from "react-router";
+import CreateCommunityForm from "@/components/CreateCommunityForm";
 
 function Overview() {
+  const navigate = useNavigate();
   return (
     <div className="space-y-8">
       <div className="space-y-3">
@@ -44,13 +47,18 @@ function Overview() {
           title="Open Tasks"
           description="Explore available tasks"
         >
-          <Button className="w-full cursor-pointer rounded-md bg-[#2F0FD1] px-8 py-5 hover:bg-[#2F0FD1]/70 sm:w-auto">
+          <Button
+            onClick={() => navigate("/dashboard/tasks")}
+            variant="secondary"
+            size="lg"
+            className="w-full sm:w-auto"
+          >
             View All
           </Button>
         </OverviewHeading>
 
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3">
-          {TASKS.map((task, i) => (
+          {TASKS.slice(0, 6).map((task, i) => (
             <TasksCard task={task} key={i} />
           ))}
         </div>
@@ -64,20 +72,25 @@ function Overview() {
         >
           <div className="flex w-full gap-4">
             <Button
+              onClick={() => navigate("/dashboard/communities")}
               variant="outline"
-              className="flex-1 cursor-pointer rounded-md bg-white px-8 py-5 text-[#2F0FD1] hover:text-white"
+              size="lg"
+              className="flex-1 bg-white"
             >
               View All
             </Button>
 
-            <Button className="w-1/2 cursor-pointer rounded-md bg-[#2F0FD1] px-8 py-5 hover:bg-[#2F0FD1]/70 sm:flex-1">
+            {/* <Button variant="secondary" size="lg" className="w-1/2 sm:flex-1">
               Create Community
-            </Button>
+            </Button> */}
+            <div className="w-1/2 sm:flex-1">
+              <CreateCommunityForm />
+            </div>
           </div>
         </OverviewHeading>
 
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3">
-          {COMMUNITIES.map((community, i) => (
+          {COMMUNITIES.slice(0, 6).map((community, i) => (
             <CommunitiesCard community={community} key={i} />
           ))}
         </div>

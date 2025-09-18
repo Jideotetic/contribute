@@ -19,7 +19,6 @@ function DashboardLayout() {
 
   const pathSegments = location.pathname.split("/").filter(Boolean);
   const currentPath = pathSegments[pathSegments.length - 1];
-  // const currentPath = location.pathname.split("/")[2];
 
   const queryParams = new URLSearchParams(location.search);
   const communityName = queryParams.get("community");
@@ -63,13 +62,7 @@ function DashboardLayout() {
       </DashboardSidebarContainer>
 
       <DashboardDesktopHeader>
-        {communityName ? (
-          <BackButton />
-        ) : taskTitle ? (
-          <BackButton />
-        ) : (
-          <Heading />
-        )}
+        {communityName || taskTitle ? <BackButton /> : <Heading />}
 
         <div className="flex items-center gap-4">
           {currentPath === "communities" && !communityName && (
