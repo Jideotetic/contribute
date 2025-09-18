@@ -7,6 +7,12 @@ function TasksCard({ task, tag }) {
   const handleOpen = () => {
     if (tag === "home-page") return;
     if (tag === "task-page") return;
+    if (tag === "overview") {
+      const params = new URLSearchParams(window.location.search);
+      params.set("task", task.title);
+      navigate(`/dashboard/tasks?${params.toString()}`, { replace: false });
+      return;
+    }
     const params = new URLSearchParams(window.location.search);
     params.set("task", task.title);
     navigate(`?${params.toString()}`, { replace: false });

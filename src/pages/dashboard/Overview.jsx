@@ -59,7 +59,7 @@ function Overview() {
 
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3">
           {TASKS.slice(0, 6).map((task, i) => (
-            <TasksCard task={task} key={i} />
+            <TasksCard task={task} key={i} tag="overview" />
           ))}
         </div>
       </div>
@@ -91,7 +91,7 @@ function Overview() {
 
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3">
           {COMMUNITIES.slice(0, 6).map((community, i) => (
-            <CommunitiesCard community={community} key={i} />
+            <CommunitiesCard community={community} key={i} tag="overview" />
           ))}
         </div>
       </div>

@@ -7,6 +7,14 @@ function CommunitiesCard({ community, tag }) {
   const handleJoin = () => {
     if (tag === "home-page") return;
     if (tag === "communities-page") return;
+    if (tag === "overview") {
+      const params = new URLSearchParams(window.location.search);
+      params.set("community", community.name);
+      navigate(`/dashboard/communities?${params.toString()}`, {
+        replace: false,
+      });
+      return;
+    }
     const params = new URLSearchParams(window.location.search);
     params.set("community", community.name);
     navigate(`?${params.toString()}`, { replace: false });
