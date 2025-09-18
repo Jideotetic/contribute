@@ -194,7 +194,7 @@ function HomePage() {
           <div className="flex justify-center">
             <Button
               onClick={() => {
-                navigate("/tasks");
+                navigate("/communities");
               }}
               size="lg"
               variant="secondary"
@@ -220,7 +220,7 @@ function HomePage() {
           </p>
         </div>
 
-        <div className="flex gap-8 overflow-x-scroll">
+        <div className="scrollbar-hidden flex gap-8 overflow-x-scroll">
           {TESTIMONIALS.map((testimonial, i) => (
             <div
               key={i}
