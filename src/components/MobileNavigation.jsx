@@ -47,7 +47,7 @@ function MobileNavigation({
                   setSheetIsOpen(false);
                   window.scrollTo({
                     top: 0,
-                    behavior: "smooth",
+                    
                   });
                 }}
                 to="/"
@@ -60,7 +60,7 @@ function MobileNavigation({
                   setSheetIsOpen(false);
                   window.scrollTo({
                     top: 0,
-                    behavior: "smooth",
+                    
                   });
                 }}
                 to="/dashboard/overview"

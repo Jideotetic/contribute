@@ -23,7 +23,6 @@ function DashboardNavigation({
                     setSheetIsOpen(false);
                     window.scrollTo({
                       top: 0,
-                      behavior: "smooth",
                     });
                   }}
                   to={link.href}
