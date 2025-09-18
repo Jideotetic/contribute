@@ -24,7 +24,7 @@ function CreateCommunityForm() {
             Create Community
           </Button>
         </DialogTrigger>
-        <DialogContent className="scrollbar-hidden max-h-[calc(100vh-200px)] overflow-scroll bg-white sm:max-w-[668px]">
+        <DialogContent className="scrollbar-hidden max-h-[calc(100vh-150px)] overflow-scroll bg-white sm:max-w-[668px]">
           <DialogHeader>
             <DialogTitle className="text-left text-[18px] text-[#050215] sm:text-[24px]">
               New Community

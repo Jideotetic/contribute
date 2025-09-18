@@ -80,9 +80,6 @@ function Overview() {
               View All
             </Button>
 
-            {/* <Button variant="secondary" size="lg" className="w-1/2 sm:flex-1">
-              Create Community
-            </Button> */}
             <div className="w-1/2 sm:flex-1">
               <CreateCommunityForm />
             </div>
