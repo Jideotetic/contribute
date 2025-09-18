@@ -19,7 +19,13 @@ function DashboardNavigation({
             {section.links.map((link, idx) => (
               <li key={idx}>
                 <NavLink
-                  onClick={() => setSheetIsOpen(false)}
+                  onClick={() => {
+                    setSheetIsOpen(false);
+                    window.scrollTo({
+                      top: 0,
+                      behavior: "smooth",
+                    });
+                  }}
                   to={link.href}
                   className={({ isActive }) =>
                     isActive
