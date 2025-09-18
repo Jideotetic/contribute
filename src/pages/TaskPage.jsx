@@ -734,7 +734,7 @@ function TaskPage() {
 
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {currentTasks.map((task, i) => (
-            <TasksCard task={task} key={i} />
+            <TasksCard task={task} key={i} tag="task-page" />
           ))}
         </div>
 
