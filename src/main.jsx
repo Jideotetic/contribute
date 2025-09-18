@@ -20,7 +20,14 @@ const router = createBrowserRouter([
     Component: RootLayout,
     children: [
       { index: true, Component: HomePage },
-      { path: "learn-more", element: <></> },
+      {
+        path: "learn-more",
+        element: (
+          <div className="flex h-screen items-center justify-center font-extrabold">
+            In Development...
+          </div>
+        ),
+      },
       { path: "tasks", Component: TaskPage },
       { path: "communities", Component: CommunitiesPage },
       { path: "*", Component: NotFound },

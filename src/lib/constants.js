@@ -15,6 +15,13 @@ import { HiUserGroup } from "react-icons/hi";
 import { BsIntersect } from "react-icons/bs";
 import { LuListChecks } from "react-icons/lu";
 
+export const LANDING_NAV_LINKS = [
+  { title: "Communities", href: "/communities" },
+  { title: "Tasks", href: "/tasks" },
+  { title: "Testimonials", href: "/#testimonials" },
+  { title: "Learn More", href: "/learn-more" },
+];
+
 export const METRICS = [
   { title: "communities", value: "1,200" },
   { title: "quests completed", value: "4,000" },
@@ -152,13 +159,6 @@ export const TESTIMONIALS = [
     name: "Sarah Martins",
     designation: "Backend Developer",
   },
-];
-
-export const NAV_LINKS = [
-  { title: "Communities", href: "/communities" },
-  { title: "Tasks", href: "/tasks" },
-  { title: "Testimonials", href: "/#testimonials" },
-  { title: "Learn More", href: "/learn-more" },
 ];
 
 export const FOOTER_LINKS = [

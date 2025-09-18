@@ -1,15 +1,14 @@
 import { Button } from "./ui/button";
 
-function AuthButtons() {
+function AuthButtons({ device }) {
   return (
-    <div className="flex flex-col items-center justify-start gap-4 sm:flex-row">
-      <Button className="w-full cursor-pointer rounded-md bg-[#2F0FD1] px-8 py-5 hover:bg-[#2F0FD1]/70 sm:w-auto">
+    <div
+      className={`${device === "desktop" ? "hidden items-center justify-between gap-4 md:flex" : device === "mobile" ? "flex w-full flex-col gap-2 md:hidden" : "flex flex-wrap gap-4"}`}
+    >
+      <Button variant="secondary" size="lg">
         Get Started
       </Button>
-      <Button
-        variant="outline"
-        className="w-full cursor-pointer rounded-md bg-[#EDF2FF] px-8 py-5 text-[#2F0FD1] hover:text-[#2F0FD1] sm:w-auto"
-      >
+      <Button variant="outline" size="lg" className="bg-white">
         Log In
       </Button>
     </div>

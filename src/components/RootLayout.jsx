@@ -1,38 +1,26 @@
-import DesktopAuthButtons from "@/components/DesktopAuthButtons";
-import MobileAuthButtons from "@/components/MobileAuthButtons";
 import { Fragment, useState } from "react";
-import { Link, NavLink, Outlet, useNavigate } from "react-router";
+import { Link, NavLink, Outlet } from "react-router";
 import { Button } from "./ui/button";
 import ScrollToTop from "./ScrollToTop";
-import { FOOTER_LINKS, NAV_LINKS } from "@/lib/constants";
+import { FOOTER_LINKS, LANDING_NAV_LINKS } from "@/lib/constants";
 import MobileNavigation from "./MobileNavigation";
+import Logo from "./Logo";
+import AuthButtons from "@/components/AuthButtons";
 
 function RootLayout() {
   const [sheetIsOpen, setSheetIsOpen] = useState(false);
 
-  const navigate = useNavigate();
-
   return (
-    <div>
+    <>
       <ScrollToTop />
-      <div className="fixed right-0 left-0 z-50 bg-white px-5 pt-2">
+      <div className="fixed right-0 left-0 z-50 px-5 pt-2">
         <header className="mx-auto flex w-full max-w-[1200px] items-center justify-between rounded-[360px] bg-[#F0F4FD] px-6 py-4 lg:py-6">
-          <Link
-            href="/"
-            onClick={(e) => {
-              e.preventDefault();
-
-              navigate("/");
-            }}
-            className="text-[32px] font-bold text-[#2F0FD1]"
-          >
-            CF
-          </Link>
+          <Logo />
 
           {/* DESKTOP NAV */}
           <nav className="hidden md:block">
             <ul className="flex gap-5 lg:gap-10">
-              {NAV_LINKS.map((link) => (
+              {LANDING_NAV_LINKS.map((link) => (
                 <li key={link.title}>
                   {link.title === "Testimonials" ? (
                     <a
@@ -58,61 +46,9 @@ function RootLayout() {
             </ul>
           </nav>
 
-          <DesktopAuthButtons />
+          <AuthButtons device="desktop" />
 
           {/* MOBILE NAV */}
-          {/* <Sheet open={sheetIsOpen} onOpenChange={setSheetIsOpen}>
-            <SheetTrigger asChild>
-              <button className="cursor-pointer rounded-[4px] bg-[#2F0FD1] p-0.5 opacity-100 ring-offset-background transition-opacity hover:opacity-70 focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:outline-hidden disabled:pointer-events-none data-[state=open]:bg-secondary md:hidden">
-                <Menu className="size-8 text-white" />
-                <span className="sr-only">Open mobile navigation</span>
-              </button>
-            </SheetTrigger>
-            <SheetContent className="bg-white">
-              <SheetHeader className="sr-only">
-                <SheetTitle>
-                  <Link href="/">CF</Link>
-                </SheetTitle>
-                <SheetDescription>Mobile navigation</SheetDescription>
-              </SheetHeader>
-              <div className="flex min-h-1/2 flex-col items-center justify-center gap-14 px-4 pt-24">
-                <nav>
-                  <ul className="flex flex-col items-center gap-6">
-                    {NAV_LINKS.map((link) => (
-                      <li key={link.title}>
-                     
-                        {link.title === "Testimonials" ? (
-                          <a
-                            className="text-[#0D0516] hover:text-[#2F0FD1] hover:underline"
-                            href={link.href}
-                            onClick={() => setSheetIsOpen(false)}
-                          >
-                            {link.title}
-                          </a>
-                        ) : (
-                          <NavLink
-                            className={({ isActive }) =>
-                              isActive
-                                ? "font-extrabold text-[#2F0FD1] hover:underline"
-                                : "text-[#0D0516] hover:text-[#2F0FD1] hover:underline"
-                            }
-                            to={link.href}
-                            onClick={() => setSheetIsOpen(false)}
-                          >
-                            {link.title}
-                          </NavLink>
-                        )}
-                     
-                      </li>
-                    ))}
-                  </ul>
-                </nav>
-
-                <MobileAuthButtons />
-              </div>
-            </SheetContent>
-          </Sheet> */}
-
           <MobileNavigation
             side="right"
             sheetIsOpen={sheetIsOpen}
@@ -121,7 +57,7 @@ function RootLayout() {
             <div className="flex min-h-1/2 flex-col items-center justify-center gap-14 px-4 pt-24">
               <nav>
                 <ul className="flex flex-col items-center gap-6">
-                  {NAV_LINKS.map((link) => (
+                  {LANDING_NAV_LINKS.map((link) => (
                     <li key={link.title}>
                       {link.title === "Testimonials" ? (
                         <a
@@ -149,7 +85,7 @@ function RootLayout() {
                 </ul>
               </nav>
 
-              <MobileAuthButtons />
+              <AuthButtons device="mobile" />
             </div>
           </MobileNavigation>
         </header>
@@ -208,7 +144,7 @@ function RootLayout() {
           </p>
         </footer>
       </div>
-    </div>
+    </>
   );
 }
 

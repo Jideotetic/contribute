@@ -1,4 +1,3 @@
-import AuthButtons from "@/components/AuthButtons";
 import { Button } from "@/components/ui/button";
 import { useEffect } from "react";
 import { useLocation } from "react-router";
@@ -12,6 +11,7 @@ import {
 } from "@/lib/constants";
 import CommunitiesCard from "@/components/CommunitiesCard";
 import TasksCard from "@/components/TasksCard";
+import AuthButtons from "@/components/AuthButtons";
 
 function HomePage() {
   const location = useLocation();
