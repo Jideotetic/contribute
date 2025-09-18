@@ -1,10 +1,12 @@
 import { COMMUNITY_TAG_BG } from "@/lib/constants";
 import { useNavigate } from "react-router";
 
-function CommunitiesCard({ community }) {
+function CommunitiesCard({ community, tag }) {
   const navigate = useNavigate();
 
   const handleJoin = () => {
+    if (tag === "home-page") return;
+    if (tag === "communities-page") return;
     const params = new URLSearchParams(window.location.search);
     params.set("community", community.name);
     navigate(`?${params.toString()}`, { replace: false });
